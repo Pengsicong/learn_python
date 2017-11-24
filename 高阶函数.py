@@ -8,7 +8,13 @@ File Name: 高阶函数.py
 Created by 彭思聪 on 2017/11/24 下午8:52.
 Copyright © 2017年 彭思聪. All rights reserved.
 
-"""  
+"""
+
+"""
+高阶函数：
+    1. 函数名可以作为参数接受
+    2. 函数名可以作为返回值
+"""
 
 
 def func(x):
