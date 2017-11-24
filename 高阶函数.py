@@ -15,7 +15,7 @@ def func(x):
     return x * x
 
 
-# 高阶函数，f做为参数名传入函数
+# 高阶函数，调用函数的函数，f做为参数名传入函数。
 def foo(a, b, f):
     return f(a) + f(b)
 
