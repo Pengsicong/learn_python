@@ -38,7 +38,7 @@ def show_time2(f):
     return inner
 
 
-def logger(Flag):
+def logger(flag):
     def show_time3(f):
 
         def inner(*args):
@@ -48,7 +48,7 @@ def logger(Flag):
             duration = end - start
             print("cost time : %0.2f sec" % duration)
 
-            if Flag == True:
+            if flag:
                 print('logging......')
             return s
 
