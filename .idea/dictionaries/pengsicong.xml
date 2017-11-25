@@ -2,8 +2,10 @@
   <dictionary name="pengsicong">
     <words>
       <w>bytearray</w>
+      <w>passwd</w>
       <w>peng</w>
       <w>pengsicong</w>
+      <w>wechat</w>
     </words>
   </dictionary>
 </component>
