@@ -97,7 +97,7 @@ def run():
             book()
 
         elif key == 'q':
-            print('已退出')
+            print('已退出！')
             return
 
 
