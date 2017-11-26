@@ -9,29 +9,30 @@ Created by 彭思聪 on 2017/11/25 下午10:33.
 Copyright © 2017年 彭思聪. All rights reserved.
 
 """
-import logging
 
+import configparser
 
-logger = logging.getLogger('mylooger')
+"""
+[DEFAULT]
+timeout = 10
+isdireact = no
+theads = 4
 
-fh = logging.FileHandler('test.log')
-sh = logging.StreamHandler()
+[PROXY]
+port = 
+addr = 
+"""
 
-fmt = logging.Formatter('%(asctime)s-%(name)s-%(levelname)s-%(message)s')
+# 获取一个文件配置的句柄
+config = configparser.ConfigParser()
 
-fh.setFormatter(fmt)
-sh.setFormatter(fmt)
+# 添加内容
+config['DEFAULT'] = {'Theads': '4',
+                     'TimeOut': '10',
+                     'IsDireact': 'no', }
 
-logger.addHandler(fh)
-logger.addHandler(sh)
+config['PROXY'] = {'addr': '',
+                   'port': '', }
 
-logger.setLevel('DEBUG')
-
-# logger.removeHandler(fh)
-
-logger.debug('logger debug message')
-logger.info('logger info message')
-logger.warning('logger warning message')
-logger.error('logger error message')
-logger.critical('logger critical message')
-
+with open('settings', 'w') as configfile:
+    config.write(configfile)
