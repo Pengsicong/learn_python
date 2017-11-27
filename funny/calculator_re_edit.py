@@ -17,7 +17,9 @@ import re
 # result =  2776672.6952380957
 
 
+# 自动将字符串转为int或者float
 def str2digit(s):
+
     if s == '':
         return 0
 
@@ -28,6 +30,7 @@ def str2digit(s):
         return float(s)
 
 
+# 两因子计算
 def cal_2factor(a, sign, b):
     a = str2digit(a)
     b = str2digit(b)
@@ -92,11 +95,24 @@ def cal_brackets(form):
     return form
 
 
+# 检错
+def check(form):
+    if re.search('[^\d\-+*/]+', form):
+        return False
+
+    else:
+        return True
+
+
 def run():
-    # formula = input()
-    formula = '1/3+1/3+1/3 + 1/3 + 1/3 + 1/3'
-    #  除去多余空白
+    formula = input()
+
+    #  规范化，除去多余空白
     formula = formula.replace(' ', '')
+
+    if not check(formula):
+        print('input invaild!')
+        exit()
 
     # 首先去除括号，并计算括号内容
     formula = cal_brackets(formula)

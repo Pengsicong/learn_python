@@ -36,6 +36,7 @@ import re
                             \W : 非数字和字母
                             \\b : 特殊边界，可以捕捉特殊字符，(r'\bh\b') 或者 ('\\bh\\b') 可以匹配被特殊边界(\W)孤立的 h 字母
     
+    
     主要方法
         1. compile      # 创建模式对象, pattern = compile(pattern)
         
@@ -50,6 +51,29 @@ import re
         5. split        # 按要求分割字符串, 功能更强大
         
         6. sub          # 字符串替换，比python字符串内置方法replace更强大
+        
+        
+    贪婪匹配与惰性匹配
+        * + ?
+        默认都是贪婪匹配，也就是尽可能匹配
+            >>>re.findall('abc*', 'abcccccc')   # * 零到多次取最多的那次
+            >>>['abcccccc']
+            
+        后面加?使其成为惰性匹配
+            >>>re.findall('abc*?', 'abcccccc')  # * 零到多次取零次
+            >>>['ab']
+            
+            
+    字符集[]有功能的符号，也就是需要加\的特殊符号
+        -   ^   \
+        
+    分组()优先级
+        默认优先级高，优先匹配分组内的内容
+            >>>re.findall('www.(\w+).com', 'www.baidu.com')
+            >>>['baidu']
+        分组前面加上?:取消优先级，全部匹配
+            >>>re.findall('www.(?:\w+).com', 'www.baidu.com')
+            >>>['www.baidu.com'']
 """
 
 s = """18755802570
