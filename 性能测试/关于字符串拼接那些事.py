@@ -13,7 +13,7 @@ Copyright © 2017年 彭思聪. All rights reserved.
 
 from test import TestFunction
 
-strlist = ['test' for _ in range(1)]
+strlist = ['test' for _ in range(1000000)]
 
 
 def test_join():
@@ -35,7 +35,7 @@ def test_puls_enumerate():
 
 
 if __name__ == '__main__':
-    test_times = 100
+    test_times = 10
     for func in [test_join, test_puls, test_puls_enumerate]:
 
         obj = TestFunction(func)
