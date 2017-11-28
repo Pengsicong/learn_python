@@ -1,4 +1,4 @@
-#!/usr/bin/env python  
+#!/usr/bin/env python3
 # encoding: utf-8  
 
 """ 
@@ -57,18 +57,18 @@ def get_color_str(txt, display=0):
 
         color_pre = color
 
-        new_word = '\033[%s;%sm' % (display, color) + word.group() + '\033[0m'
+        new_word = r'\033[%s;%sm' % (display, color) + word.group() + r'\033[0m'
 
         txt = re.sub(r'\b%s\b' % word.group(), new_word, txt)
 
     return txt
 
 
-def print_color_str(txt, display=0):
+def print_color_str(txt, display=0, end='\n'):
     txt = get_color_str(txt, display)
-    print(txt)
+    print(txt, end=end)
 
 
 if __name__ == '__main__':
-    s = "These six words are very happy!"
+    s = "These six words are very happy!哈哈"
     print_color_str(s, 1)

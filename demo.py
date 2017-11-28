@@ -10,29 +10,10 @@ Copyright © 2017年 彭思聪. All rights reserved.
 
 """
 
-import configparser
+from funny.print_color_str import print_color_str
+from string import ascii_letters
 
-"""
-[DEFAULT]
-timeout = 10
-isdireact = no
-theads = 4
-
-[PROXY]
-port = 
-addr = 
-"""
-
-# 获取一个文件配置的句柄
-config = configparser.ConfigParser()
-
-# 添加内容
-config['DEFAULT'] = {'Theads': '4',
-                     'TimeOut': '10',
-                     'IsDireact': 'no', }
-
-config['PROXY'] = {'addr': '',
-                   'port': '', }
-
-with open('settings', 'w') as configfile:
-    config.write(configfile)
+for _ in range(20):
+    for letter in ascii_letters:
+        print_color_str(letter, end=' ')
+    print()
