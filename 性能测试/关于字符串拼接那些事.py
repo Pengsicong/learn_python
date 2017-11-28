@@ -11,17 +11,15 @@ Copyright © 2017年 彭思聪. All rights reserved.
 """
 
 
-from test_decorator import process_test
+from test import TestFunction
 
-strlist = ['test' for _ in range(1000000)]
+strlist = ['test' for _ in range(1)]
 
 
-@process_test
 def test_join():
     return ''.join(strlist)
 
 
-@process_test
 def test_puls():
     result = ''
     for s in strlist:
@@ -29,7 +27,6 @@ def test_puls():
     return result
 
 
-@process_test
 def test_puls_enumerate():
     result = ''
     for i, v in enumerate(strlist):
@@ -38,7 +35,11 @@ def test_puls_enumerate():
 
 
 if __name__ == '__main__':
+    test_times = 100
+    for func in [test_join, test_puls, test_puls_enumerate]:
 
-    test_join()
-    test_puls()
-    test_puls_enumerate()
+        obj = TestFunction(func)
+        obj.test(test_times)
+        obj.show()
+
+

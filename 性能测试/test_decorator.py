@@ -20,10 +20,10 @@ def process_test(func):
     @wraps(func)
     def wrapper(*args, **kwargs):
         start_time = process_time()
-        result = func(*args, **kwargs)
+        func(*args, **kwargs)
         duration = process_time() - start_time
         print('%s cost %0.3f ms' % (wrapper.__name__, duration * 1000))
-        return result
+        return duration
 
     return wrapper
 
@@ -34,9 +34,9 @@ def perf_test(func):
     @wraps(func)
     def wrapper(*args, **kwargs):
         start_time = perf_counter()
-        result = func(*args, **kwargs)
+        func(*args, **kwargs)
         duration = perf_counter() - start_time
         print('%s cost %0.3f ms' % (wrapper.__name__, duration * 1000))
-        return result
+        return duration
 
     return wrapper

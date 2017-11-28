@@ -100,7 +100,7 @@ def multiply(*args):
 
 
 # func()                  # 执行的是闭包inner函数
-# t = add(1, 2, 3)
-t = multiply(1, 2, 3)
+t = add(1, 2, 3)
+# t = multiply(1, 2, 3)
 print(t)
 
