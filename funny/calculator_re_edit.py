@@ -18,7 +18,7 @@ import re
 
 
 # 自动将字符串转为int或者float
-def str2digit(s):
+def repr2digit(s):
 
     if s == '':
         return 0
@@ -32,8 +32,8 @@ def str2digit(s):
 
 # 两因子计算
 def cal_2factor(a, sign, b):
-    a = str2digit(a)
-    b = str2digit(b)
+    a = repr2digit(a)
+    b = repr2digit(b)
 
     if sign == '+':
         return a + b
@@ -61,7 +61,7 @@ def cal_nobrackets(form):
         sign = pat2_result.group(2)
         b = pat2_result.group(3)
         result = cal_2factor(a, sign, b)
-        result = str(result)
+        result = repr(result)
         form = pattern_2.sub(result, form, 1)
 
         pat2_result = pattern_2.search(form)
@@ -72,7 +72,7 @@ def cal_nobrackets(form):
         sign = pat1_result.group(2)
         b = pat1_result.group(3)
         result = cal_2factor(a, sign, b)
-        result = str(result)
+        result = repr(result)
         form = pattern_1.sub(result, form, 1)
 
         pat1_result = pattern_1.search(form)
@@ -97,7 +97,7 @@ def cal_brackets(form):
 
 # 检错
 def check(form):
-    if re.search('[^\d\-+*/]+', form):
+    if re.search(r'[^\d\-+*/().]+', form):
         return False
 
     else:
