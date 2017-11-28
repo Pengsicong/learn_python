@@ -26,20 +26,28 @@ Copyright © 2017年 彭思聪. All rights reserved.
     11. classmethod
     12. compile
     13. complex
-    14. delattr
+    
+    14. delattr     通过传入一个字符串去一个对象里面输出一个成员（属性/方法
+    
     15. dict
     16. dir
     17. divmod
     18. enumerate
     19. eval
     20. exec
+    
     21. filter  接受一个函数和序列，返回一个filter类型的迭代器，按照函数的要求过滤序列, 注意和map的区别：filter只能过滤，不能修改
+    
     22. float
     23. format
     24. frozenset
-    25. getattr
-    26. globals
-    27. hasattr
+    
+    25. getattr  通过传入一个字符串去一个对象里面获取一个成员（属性/方法）的数据
+    
+    26. globals     将一个全局变量在一个局部空间里面定义为globals意味着在一个局部空间里面可以修改全局变量（不加只能访问，不能修改）
+    
+    27. hasattr  通过传入一个字符串去一个对象里面判断一个成员（属性/方法）是否存在
+    
     28. hash
     29. help
     30. hex
@@ -52,7 +60,9 @@ Copyright © 2017年 彭思聪. All rights reserved.
     37. len
     38. list
     39. locals
+    
     40. map     接受一个函数和序列，返回一个map类型的迭代器，将函数作用于序列的每一个值
+    
     41. max
     42. memoryview
     43. min
@@ -69,7 +79,9 @@ Copyright © 2017年 彭思聪. All rights reserved.
     54. reversed
     55. round
     56. set
-    57. setattr
+    
+    57. setattr     通过传入两个字符串去一个对象里面设置一个成员（属性/方法）
+    
     58. slice
     59. sorted
     60. staticmethod
