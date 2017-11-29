@@ -282,19 +282,14 @@ Copyright © 2017年 彭思聪. All rights reserved.
             
     
 """
-#
-# class MyType(type):
-#     def __init__(self, *args, **kw):
-#         print('MyType')
-#
-#     def __call__(self, *args, **kwargs):
-#         print('call')
-#         return self.__new__(self, *args, **kwargs)
-#
-#
-# class Bar(object, metaclass=MyType):
-#     def foo(self):
-#         print('foo')
-#
-# obj = Bar()
-# obj.foo()
+
+class Bar:
+    __all__ = ['foo']
+
+    def foo(self):
+        print('foo')
+
+
+obj = Bar()
+obj.x = 100
+print(obj.x)
