@@ -114,16 +114,16 @@ def person2(name, age, *args, city, job):
       nonlocal是python3新增的关键字，有了这个 关键字，就能完美的实现闭包了。
 """
 
-# 全局变量，在下面函数中不能改变
+# 全局变量
 x = 10
 
 
 def func():
-    # 错误，因为在局部作用域改变了全局变量
+    # 错误，未将x定义成全局变量，故不能修改
     # x = x + 1
     # return x
 
-    # 错误，因为在局部作用域改变了全局变量
+    # 正确，定义了全局变量，可以修改
     global x
     x = x + 1
     return x
