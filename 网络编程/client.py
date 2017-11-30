@@ -23,9 +23,33 @@ adress = ('127.0.0.1', 8080)
 # 建立连接
 sk.connect(adress)
 
+buffer_size = 1024
 
-# sk.send('hi'.encode('utf8'))
-# 接受消息
-# data = sk.recv(1024)
-# print(data.decode('utf8'))
+while True:
+    data = input('>>>').encode()
+    if data:
+        sk.send(data)
+
+        length = sk.recv(buffer_size)
+
+        try:
+            length = int(length)
+        except Exception as e:
+            print(e)
+            print(length)
+            length = 0
+
+        data = b''
+
+        for _ in range((length + buffer_size - 1) // buffer_size):
+
+            recv = sk.recv(buffer_size)
+            data += recv
+
+        print(data.decode('utf8'))
+
+
+    else:
+        sk.close()
+        break
 

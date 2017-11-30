@@ -3,14 +3,15 @@
 
 """ 
 
-File Name: server.py
+File Name: server_command.py
 
-Created by 彭思聪 on 2017/11/30 上午12:20.
+Created by 彭思聪 on 2017/12/1 上午12:44.
 Copyright © 2017年 彭思聪. All rights reserved.
 
 """  
 
 import socket
+import subprocess
 
 # 创建socket
 sk = socket.socket()
@@ -32,12 +33,17 @@ while True:
     print(conn)
 
     while True:
-        recv = conn.recv(1024)
-        if recv:
-            print(recv.decode())
-            data = input('>>>').encode()
-            conn.send(data)
+        command = conn.recv(1024)
+        if command:
+            a = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE)
+            data = a.stdout.read()
+            if not data:
+                data = b''
+
+            length = str(len(data))
+            conn.sendall(length.encode())
+            conn.sendall(data)
+
         else:
             conn.close()
             break
-
