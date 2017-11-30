@@ -40,7 +40,7 @@ while True:
             if not data:
                 data = b''
 
-            length = str(len(data))
+            length = "%24d" % len(data)
             conn.sendall(length.encode())
             conn.sendall(data)
 

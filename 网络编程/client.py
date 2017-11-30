@@ -30,14 +30,14 @@ while True:
     if data:
         sk.send(data)
 
-        length = sk.recv(buffer_size)
+        length = sk.recv(24)
 
         try:
             length = int(length)
         except Exception as e:
             print(e)
             print(length)
-            length = 0
+            length = 1
 
         data = b''
 
