@@ -22,7 +22,7 @@ adress = ('127.0.0.1', 8080)
 sk.bind(adress)
 
 # 设置最大请求
-sk.listen(1)
+sk.listen(30)
 
 
 while True:
@@ -35,9 +35,15 @@ while True:
         recv = conn.recv(1024)
         if recv:
             print(recv.decode())
-            data = input('>>>').encode()
-            conn.send(data)
+            # data = input('>>>').encode()
+            # conn.send(data)
+            conn.send(b'abc')
+            conn.close()
+            break
+
         else:
             conn.close()
             break
+
+from datetime import datetime
 

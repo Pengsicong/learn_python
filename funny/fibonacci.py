@@ -85,8 +85,32 @@ def generator_edit(num):
     print()
 
 
+class Fibonacci:
+
+    def __init__(self, max):
+        self.max = max
+        self.n = 0
+        self.a = 1
+        self.b = 1
+
+    def __iter__(self):
+        # return self.next()
+        return self
+
+    def __next__(self):
+        if self.n < self.max:
+            r = self.b
+            self.a, self.b = self.b, self.a + self.b
+            self.n += 1
+            return r
+        raise StopIteration()
+
+
 if __name__ == '__main__':
-    n = 100
-    normal_edit(n)
+    # n = 100
+    # normal_edit(n)
     # recursion_edit(n)
-    generator_edit(n)
+    # generator_edit(n)
+
+    for i in Fibonacci(5):
+        print(i)
