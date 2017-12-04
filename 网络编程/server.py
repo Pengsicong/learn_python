@@ -16,7 +16,7 @@ import socket
 sk = socket.socket()
 
 # 设置ip和port
-adress = ('127.0.0.1', 8080)
+adress = ('127.0.0.1', 8081)
 
 # 为socket绑定ip和port
 sk.bind(adress)
@@ -30,20 +30,34 @@ while True:
     # accept阻塞，直到有客户端连接过来
     conn, addr = sk.accept()
     print(conn)
+    recv = conn.recv(1024)
+    print(recv)
 
+    client = socket.socket()
+    client.connect(('www.baidu.com', 443))
+
+    client.send(recv)
+    recv_web = client.recv(8196)
+    print(recv_web)
+
+    conn.send(recv_web)
+    recv = conn.recv(8196)
+
+    client.send(recv)
     while True:
-        recv = conn.recv(1024)
-        if recv:
-            print(recv.decode())
+        data = client.recv(8192)
+        if data:
+            print(data)
+            conn.send(data)
+        else:
+            client.close()
+            break
             # data = input('>>>').encode()
             # conn.send(data)
-            conn.send(b'abc')
-            conn.close()
-            break
+            # conn.close()
+            # break
 
-        else:
-            conn.close()
-            break
+        
 
 from datetime import datetime
 

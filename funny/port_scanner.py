@@ -18,7 +18,7 @@ from gevent.pool import Pool
 一个简单的端口扫描器
 """
 
-pool = Pool(1024)
+pool = Pool(65535)
 
 
 def foo(n):
@@ -28,7 +28,7 @@ def foo(n):
 
 
 def port_scaner(port, timeout=2):
-    ip = '192.168.0.105'
+    ip = '127.0.0.1'
     address = (ip, port)
     try:
         sk = socket.create_connection(address, timeout=timeout)
@@ -48,7 +48,7 @@ if __name__ == '__main__':
     #     if job.value:
     #         print(job.value)
 
-    ports = pool.map(port_scaner, range(1, 2500))
+    ports = pool.map(port_scaner, range(0, 65536))
 
     for port in ports:
         if port:
