@@ -33,7 +33,7 @@ def show_perf(func):
 def foo(x):
     global num
     # IO bounch
-    for i in range(50000000):
+    for i in range(10000000):
         num += 1
 
     # CPU bounch
@@ -44,7 +44,7 @@ def foo(x):
 def bar(x):
     global num
     # IO bounch
-    for i in range(50000000):
+    for i in range(10000000):
         num += 1
 
     # CPU bounch
@@ -64,6 +64,7 @@ def main():
 
     print('Thread active count: %s (in front of join)' % threading.active_count())
 
+    # join 方法表示主线程等待子线程执行完毕,才继续执行下一步
     t1.join()
     t2.join()
 
