@@ -52,7 +52,3 @@ Python Queue模块有三种队列及构造函数:
     q.task_done() 在完成一项工作之后，q.task_done() 函数向任务已经完成的队列发送一个信号
     q.join() 实际上意味着等到队列为空，再执行别的操作
 """
-
-d = queue.Queue()
-
-d.put(1)

@@ -14,8 +14,6 @@ from functools import wraps
 import threading
 import time
 
-num = 0
-
 
 def show_perf(func):
 
@@ -32,22 +30,22 @@ def show_perf(func):
 @show_perf
 def foo(x):
     global num
-    # IO bounch
+    # CPU bounch
     for i in range(10000000):
         num += 1
 
-    # CPU bounch
+    # IP bounch
     time.sleep(x)
 
 
 @show_perf
 def bar(x):
     global num
-    # IO bounch
+    # CPU bounch
     for i in range(10000000):
         num += 1
 
-    # CPU bounch
+    # IO bounch
     time.sleep(x)
 
 
@@ -70,6 +68,7 @@ def main():
 
 
 if __name__ == '__main__':
+    num = 0
     main()
     print('Thread active count: %s (after join)' % threading.active_count())
     print('num = %s' % num)
