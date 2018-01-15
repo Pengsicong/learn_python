@@ -18,8 +18,8 @@ import requests
 def gethtml(url):
     try:
         print(url)
-        html = requests.get(url)
-        print(html)
+        resp = requests.get(url)
+        print(resp.status_code)
     except Exception as e:
         print(e)
 
