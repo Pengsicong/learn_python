@@ -10,37 +10,12 @@ Copyright © 2018年 彭思聪. All rights reserved.
 
 """  
 
-import wda
-from PIL import Image
-import numpy as np
-import matplotlib.pyplot as plt
+from enum import Enum
 
 
-c = wda.Client()
-
-c.screenshot('./1.png')
-
-im = Image.open('./1.png').convert('RGB')
-
-p1 = im.crop((148, 713, 721, 1286))
-
-p2 = im.crop((148, 116, 721, 689))
+class Week(Enum):
+    Sunday = 0
+    Monday = 1
 
 
-n1 = np.array(p1)
-n2 = np.array(p2)
-n3 = n1 ^ n2
-
-im3 = Image.fromarray(n3, 'RGB')
-
-plt.subplot(131)
-plt.imshow(n1)
-
-plt.subplot(132)
-plt.imshow(n2)
-
-plt.subplot(133)
-plt.imshow(im3.convert('L'))
-
-plt.show()
-
+print(Week(1))
