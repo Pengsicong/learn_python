@@ -13,7 +13,9 @@ Copyright © 2017年 彭思聪. All rights reserved.
 import socket
 
 # 创建socket
-sk = socket.socket()
+sk = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+
+sk.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
 
 # 设置ip和port
 adress = ('127.0.0.1', 8081)
@@ -32,32 +34,4 @@ while True:
     print(conn)
     recv = conn.recv(1024)
     print(recv)
-
-    client = socket.socket()
-    client.connect(('www.baidu.com', 443))
-
-    client.send(recv)
-    recv_web = client.recv(8196)
-    print(recv_web)
-
-    conn.send(recv_web)
-    recv = conn.recv(8196)
-
-    client.send(recv)
-    while True:
-        data = client.recv(8192)
-        if data:
-            print(data)
-            conn.send(data)
-        else:
-            client.close()
-            break
-            # data = input('>>>').encode()
-            # conn.send(data)
-            # conn.close()
-            # break
-
-        
-
-from datetime import datetime
 

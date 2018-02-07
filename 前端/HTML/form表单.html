@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>learn_form</title>
+</head>
+<body>
+<form method="post">
+    <p>姓名:<input type="text" name="username" title="username"></p>
+    <p>密码:<input type="password" name="password" title="password"></p>
+    <p><input type="submit" value="点我"></p>
+
+    <!--button不能提交数据,一般配合js来使用-->
+    <p><input type="button" value="点我2"></p>
+    <div>1:<input type="checkbox" value="1" name="number" title="1"></div>
+    <div>2:<input type="checkbox" value="2" name="number" title="2"></div>
+
+    <!--name属性是用于服务器辨识的-->
+    <div>男:<input type="radio" value="male" name="sex" title="male"></div>
+    <div>女:<input type="radio" value="female" name="sex" title="female"></div>
+    
+    <div><input type="reset" value="reset"></div>
+
+    <div><input type="file"></div>
+
+    <label for="jianjie">自我简介</label>
+    <textarea id="jianjie" rows="4" cols="20">自我简介</textarea>
+
+    <label for="name">姓名</label>
+    <input id="name" type="text">
+
+    <label for="city">城市</label>
+    <select id="city" name="city" multiple size="2">
+        <optgroup label="hebei">
+            <option value="sjz">石家庄</option>
+            <option value="sjz2">石家庄2</option>
+            <option value="sjz3">石家庄3</option>
+            <option value="sjz4">石家庄4</option>
+        </optgroup>
+    </select>
+</form>
+</body>
+</html>

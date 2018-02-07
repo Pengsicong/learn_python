@@ -1,0 +1,25 @@
+*{
+    margin: 0;
+	padding: 0;
+	border: 0;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 100%;
+	vertical-align: baseline
+}
+#top {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    margin: auto;
+    z-index: 11;
+}
+#top_image{
+    width: 100%;
+    height: 100%;
+    position: relative;
+    background: url("topBG.jpg") #121925 50% 50% fixed no-repeat;
+    background-size: cover;
+    z-index: 11;
+
+}
