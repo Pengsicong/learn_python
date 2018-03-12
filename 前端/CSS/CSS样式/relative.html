@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>relative</title>
+    <style>
+        *{
+            margin: 0;
+        }
+        .outer{
+            position: relative;
+            border: 1px solid red;
+        }
+        .munu1{
+            width: 50px;
+            height:50px;
+            background: greenyellow;
+            text-align: center;
+        }
+        .munu2{
+            width: 50px;
+            height: 50px;
+            background: orangered;
+            position: relative;
+            left: 50px;
+            text-align: center;
+        }
+        .bottom{
+            width: 100px;
+            height: 50px;
+            background: royalblue;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<div class="outer">
+    <div class="munu1">菜单一</div>
+    <div class="munu2">菜单二</div>
+</div>
+<div class="bottom">底部</div>
+</body>
+</html>

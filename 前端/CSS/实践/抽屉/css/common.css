@@ -1,0 +1,31 @@
+*{
+    margin: 0;
+}
+#top{
+    background: #2459a2;
+    height: 44px;
+}
+.logo{
+    width: 121px;
+    height: 23px;
+    background: url("../imgs/logo.png") no-repeat 0 0;
+    float: left;
+    margin-top: 11px;
+
+}
+#top_content{
+    margin: 0 auto;
+    width: 70%;
+}
+.tag{
+    float: left;
+    margin-left: 20px;
+}
+.tg{
+    padding:0 16px 0 13px;
+    color: #c0cddf;
+    display: inline-block;
+}
+a{
+    text-decoration: none;
+}

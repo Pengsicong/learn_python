@@ -1,0 +1,1219 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>抽屉新热榜-聚合每日热门、搞笑、有趣资讯</title>
+    <meta charset="utf-8" />
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+		body, button, input, select, td, textarea{
+			font-size: 12px ;
+			color: #333;
+		}
+		input{
+			outline: none;
+		}
+        .head-band{
+            background: #2459a2;
+            height: 44px;
+            width: 100%;
+            position: fixed;
+			top: 0;
+			left: 0;
+			z-index: 10000;
+        }
+        .head-content{
+            margin: 0 auto;
+            width: 1016px;
+            height: 44px;
+			/*以一行为标准*/
+			line-height: 44px;
+			position: relative;
+        }
+        .digg-logo{
+            background: url("./imgs/logo.png");
+            width: 121px;
+            height: 23px;
+            margin-top: 11px;
+            float: left;
+        }
+        .action-menu{
+            float: left;
+            margin-left: 20px;
+        }
+		.action-menu, .action-nav{
+			font-size: 12px;
+		}
+
+		a{
+			text-decoration: none;
+		}
+		.child-nav a:hover, .content-list .item .news-content .part1 a:hover, .sort-nav a:hover, a.time-a:hover b{
+    		text-decoration: underline;
+		}
+		.action-menu a.tb{
+			color: #c0cddf;
+			padding: 0 13px 0 16px;
+			margin-left: -4px;
+			display: inline-block;
+		}
+		.action-menu a.tb:hover , .action-nav a:hover{
+			background:  wheat;
+		}
+		.action-menu a.active, .action-menu a.active:hover
+		{
+			color: #fff;
+			background: #204982;
+		}
+
+		.key-search{
+			float: right;
+			margin-top: 6px;
+		}
+
+		.key-search .search-txt-s, .key-search .i{
+			float: left;
+			    background-color: #f4f4f4;
+			    border: 1px solid #e0e0e0;
+		}
+		.key-search .search-txt-s{
+			width: 91px;
+			height: 25px;
+			padding: 2px 2px 2px 5px;
+		}
+		.key-search a.i{
+			height: 29px;
+			width: 30px;
+			display: inline-block;
+		}
+		.ico{
+			background: url("./imgs/icon.png") no-repeat 0 -197px;
+			height: 12px;
+			width: 11px;
+			margin-left: 11px;
+			margin-top: 9px;
+			display: block;
+		}
+		.action-nav{
+			position: absolute;
+			right: 131px;
+		}
+		.action-nav a{
+			color: #ffffff;
+			margin: 0 5px 0 -8px;
+			padding: 0 20px;
+			display: inline-block;
+			height: 44px;
+		}
+
+		.main-content-band{
+			background: #ededed;
+			width: 100%;
+			padding-top: 44px;
+			clear: both;
+		}
+		.main-content{
+			margin: 0 auto;
+			background: #ffffff;
+			width: 960px;
+			height: auto!important;
+			padding: 6px 28px 60px;
+			min-height: 700px;
+			overflow: hidden;
+		}
+		.content-L{
+			float: left;
+			width: 630px;
+			padding-top: 3px;
+			overflow: hidden;
+		}
+		.child-nav, .sort-nav{
+			float: left;
+		}
+		.sort-nav{
+			margin-left: 144px;
+			margin-top: 10px;
+			font-size: 12px;
+		}
+		.sort-nav a {
+			margin-left: 10px;
+			color: #390;
+			text-align: center;
+		}
+		.publish-btn{
+			float: right;
+			color: #ffffff;
+			background: #84a42b;
+			display: inline-block;
+			height: 30px;
+			line-height:30px;
+			text-align: center;
+			font-size: 14px;
+			width: 134px;
+		}
+		.publish-btn .n1{
+			height: 12px;
+			width: 11px;
+			display: inline-block;
+			background-position: 0 -184px;
+		}
+		.publish-btn .n2{
+			font-weight: 400;
+			margin-left: 8px;
+		}
+		.publish-btn:hover{
+			background: #8eb031;
+		}
+		.nav-top-area{
+			overflow: hidden;
+			clear: both;
+		}
+		.child-nav a{
+			display: inline-block;
+			width: 60px;
+			height: 26px;
+			line-height: 26px;
+			text-align: center;
+			font-size: 12px;
+			color: #369;
+			font-weight: 700;
+			margin-bottom: 13px;
+			margin-top: 3px;
+		}
+		.child-nav .active {
+    		background-position: 0 -299px;
+    		color: #333;
+    		text-decoration: none;
+		}
+		.sort-nav .active{
+			color: #b4b4b4;
+		}
+		.child-nav .active:hover, .sort-nav .active:hover, .publish-btn:hover{
+			text-decoration: none;
+		}
+		.icons{
+			background: url("./imgs/tip.png") no-repeat 0 0;
+		}
+		.nav-top-area, .tags {
+    		border-bottom: 1px solid #ccdcef;
+		}
+		.content-list{
+			position: relative;
+		}
+		.content-list .item{
+			padding-top: 10px;
+			border-bottom: 1px solid #dce7f4;
+			overflow: hidden;
+		}
+		.content-list .item .news-content{
+			padding-top: 1px;
+		}
+		.content-list .item .news-content .part1{
+			line-height: 20px;
+
+		}
+		.content-list .item .news-pic{
+			float: right;
+			margin-left: 10px;
+			padding-bottom: 5px;
+		}
+		.content-list .item .news-pic img{
+			width: 60px;
+			height: 60px;
+			background-color: #fff;
+			border: 1px solid #ccc;
+			padding: 1px;
+			vertical-align: top;
+		}
+		.content-list .item .news-content .part1 .show-content{
+			font-size: 14px;
+			color: #369;
+			font-weight: 700;
+		}
+		.content-list .item .content-source{
+			color: #b4b4b4;
+			margin-left: 7px;
+		}
+		.content-list .item .part1 a.n2{
+			color: #b4b4b4;
+			text-decoration: underline;
+			margin-left: 7px;
+			vertical-align: 1px;
+		}
+		.content-list .item .news-content .area-summary{
+			font-size: 12px;
+			color: #787878;
+			margin-top: 3px;
+			font-family: Arial,Helvetica,sans-serif;
+		}
+		.content-list .item .news-content .part2{
+			padding-top: 6px;
+			margin-bottom: 12px;
+			color: #ccc;
+
+		}
+		.hand-icon{
+			background: url("./imgs/hand_icon.png") no-repeat 0 0;
+		}
+		.content-list .item .news-content .part2 .icon-digg{
+			display: inline-block;
+			width: 18px;
+			height: 18px;
+			background-position: 0 -40px;
+		}
+		.content-list .item .news-content .part2 b{
+			margin-left: 7px;
+		}
+		.content-list .item .news-content .part2 a.digg-a b, .content-list .item .news-content .part2 a.dislike b {
+			color: #99aecb;
+			font-size: 14px;
+			font-weight: 700;
+			vertical-align: 4px;
+		}
+		.content-list .item .news-content .part2 .digg-a, .content-list .item .news-content .part2 .discus-a, .content-list .item .news-content .part2 .dislike, .content-list .item .news-content .part2 .disliked, .content-list .item .news-content .part2 .isVoted {
+    		min-width: 54px;
+		}
+		.content-list .item .news-content .part2 .icon-discus{
+			background-position: 0 -100px;
+			width: 18px;
+			height: 18px;
+			vertical-align: -1px;
+			display: inline-block;
+		}
+		.content-list .item .news-content .part2 .discus-a b {
+    		padding-right: 3px;
+    		color: #99aecb;
+			vertical-align: 4px;
+		}
+		.content-list .item .news-content .part2 .icon-collect {
+			background-position: 0 -160px;
+			width: 18px;
+			height: 18px;
+			display: inline-block;
+		}
+		.content-list .item .news-content .part2 .collect-a b, .content-list .item .news-content .part2 .remove-col-a b {
+			color: #99aecb;
+			font-size: 12px;
+			vertical-align: 4px;
+		}
+		.content-list .item .news-content .part2 .user-a img {
+			width: 15px;
+			height: 15px;
+			padding: 1px;
+			border: 1px solid #ccc;
+			background-color: #fff;
+		}
+		.content-list .item .news-content .part2 .user-a b {
+			color: #99aecb;
+			vertical-align: 4px;
+			margin-left: 4px;
+		}
+
+		.content-list .item .news-content .part2 .time-into b {
+			color: #e59373;
+			margin-left: 0;
+		}
+
+		.content-list .item .news-content .part2 .time-into {
+			color: #ccc;
+			margin-left: 7px;
+		}
+
+		.content-list .item .news-content .part2 .collect-a {
+			width: 69px;
+			cursor: pointer;
+		}
+		.content-list .item .news-content .part2 a, .content-list .item .news-content .part2 span {
+			display: inline-block;
+		}
+		.content-list .item .news-content .part2 .time-into .span a:hover, .content-list .item .news-content .part2 .user-a:hover b, .content-list .item .news-content .part2 a.collect-a:hover b, .content-list .item .news-content .part2 a.remove-col-a:hover b, .dynamic_user-a:hover b {
+			text-decoration: underline;
+			color: #369;
+		}
+		.no-bottom{
+			height: 11px;
+			background: #ffffff;
+		}
+		.page-area{
+			margin-top: 9px;
+		}
+		#dig_lcpage{
+			float: left;
+		}
+		ol, li{
+			list-style: none;
+		}
+		#dig_lcpage li{
+			display: inline;
+		}
+		#dig_lcpage a, #dig_lcpage span {
+			float: left;
+			color: #369;
+			height: 34px;
+			line-height: 34px;
+			text-align: center;
+			width: 34px;
+			border: 1px solid #e1e1e1;
+		}
+		a.ct_pagepa{
+			margin-right: 6px;
+		}
+		#dig_lcpage a.ct_page_edge {
+			margin-right: 9px;
+			width: 77px;
+			font-weight: 400;
+		}
+		#dig_lcpage .ct_pageeli, #dig_lcpage .ct_pagepw {
+			margin-right: 6px;
+			border: 0;
+		}
+		#dig_lcpage .ct_pagepw {
+			font-weight: 700;
+			color: #333;
+		}
+		#dig_lcpage a:hover {
+			color: #fff;
+			background-color: #369;
+			border: 1px solid #369;
+		}
+		#dig_lcpage a{
+			-webkit-border-radius: 5px;
+			-moz-border-radius: 5px;
+			border-radius: 5px;
+		}
+		.footer-band {
+			margin: 0 auto;
+			width: 960px;
+			font-size: 12px;
+			background-color: #fff;
+			padding: 0 28px;
+			overflow: hidden;
+		}
+		.footer-band .foot-nav {
+			padding-top: 15px;
+			text-align: center;
+			border-top: 1px solid #ccdcef;
+			position: relative;
+		}
+		.footer-band .foot-nav a {
+			color: #369;
+			margin-left: 10px;
+			margin-right: 10px;
+		}
+		.footer-band .foot-nav span {
+			color: #5681ab;
+			display: inline-block;
+			height: 11px;
+			overflow: hidden;
+		}
+		.footer-band .foot-nav2 {
+			margin-top: 6px;
+			margin-bottom: 15px;
+			text-align: center;
+		}
+		.foot_b {
+			color: #999;
+			font-size: 12px;
+		}
+    </style>
+</head>
+<body>
+<!-- 页面头部 -->
+<div class="head-band">
+	<div class="head-content">
+		<a href="#" class="digg-logo"></a>
+		<!-- 导航 -->
+		 <div class="action-menu">
+				<a href="#"  class="tb active" >全部</a>
+					<a href="#" class="tb">42区</a>
+					<a href="#" class="tb">段子</a>
+					<a href="#" class="tb">图片</a>
+					<a href="#" class="tb">挨踢1024</a>
+					<a href="#" class="tb">你问我答</a>
+		 </div>
+		<div class="key-search">
+
+			<form action="/" method="post" name="searchFrm2" id="searchFrm2">
+				<input type="text" class="search-txt-s" name="words" id="txtSearch2" autocomplete="off">
+
+				<a href="#" class="i" name="searchBtn_2" id="searchBtn_3"><span class="ico"></span></a>
+			</form>
+
+		</div>
+		<div class="action-nav">
+
+			<a href="#" class="login-btn-a" id="reg-link-a">注册</a>
+            <a href="#" class="login-btn-a" id="login-link-a">登录</a>
+
+		</div>
+
+		<div class="chat-notice-area"></div>
+
+		<input type="hidden" id="hidjid" value="" />
+	</div>
+</div>
+
+<div class="main-content-band">
+	<div class="main-content">
+		<div class="content-L">
+			<!-- 最新最热按钮 -->
+			<div class="nav-top-area">
+
+				<div class="child-nav">
+					<a href="#"  class="hotbtn active icons" id="hotts-nav-btn">最热</a>
+					<a href="#"  class="newbtn" id="newest-nav-btn">发现</a>
+					<a href="#"  class="personbtn" id="person-nav-btn">人类发布</a>
+
+				</div>
+
+				<div class="sort-nav">
+					<a href="#" class="active hotbtn" id="sort-nav-btn">即时排序</a>
+					<a href="#" class="newbtn" id="sort24-nav-btn">24小时</a>
+					<a href="#" class="newbtn" id="sort3-nav-btn">3天</a>
+				</div>
+
+				<a href="#" class="publish-btn" id="publishBtn" lang="all">
+					<span class="ico  	n1"></span><span class="n2">发布</span>
+				</a>
+			</div>
+
+			<!-- 内容显示区域 -->
+
+			<div class="content-list" id="content-list">
+
+        				<div class="item">
+
+								<div class="news-pic"><img lang="17779981" original="//img3.chouti.com/CHOUTI_20180302/17AB7EC02EBC4034B8AC3020C3B7E924_W193H193=C120x120.jpg?quality=80" src="./imgs/17AB7EC02EBC4034B8AC3020C3B7E924_W193H193=C120x120.jpg" alt="抽屉新热榜" /></div>
+
+
+							<div class="null-item"></div>
+
+							<div class="news-content" id="newsContent17779981">
+								<div class="part1">
+										<a href="http://www.qdaily.com/articles/50657.html" class="show-content color-chag" target="_blank" onMouseDown="linksClickStat(17779981);">
+
+
+
+
+
+
+
+													把便利店开到县城去
+
+
+										</a>
+
+										<span class="content-source">-www.qdaily.com</span>
+
+									<!-- 段子和谣言类别不显示类别名称 -->
+
+										<a href="/r/news/hot/1" class="n2"><span class="content-kind">42区</span></a>
+
+									<!-- 来源手机客户端 -->
+
+
+
+
+									<!-- 显示话题标签 -->
+
+								</div>
+								<!-- 显示摘要 -->
+
+								<div class="area-summary">
+										<span class="summary">未来便利店的机会在二三线甚至县级城市，行业内几乎没有人会否认这一观点。但在这里，外资便利店们也同样面临这不小的挑战。</span>
+									</div>
+
+
+								<div class="part2" share-pic="http://img3.chouti.com/CHOUTI_20180307/89B9E740219449518530BCCD21E4F04F_W880H880.jpg" share-title='把便利店开到县城去' share-summary='未来便利店的机会在二三线甚至县级城市，行业内几乎没有人会否认这一观点。但在这里，外资便利店们也同样面临这不小的挑战。' share-linkid="17884881" share-subject="42区">
+
+
+
+
+										<a href="javascript:;" class="digg-a" title="推荐"><span class="hand-icon icon-digg"></span><b>39</b><i style="display:none">17779981</i></a>
+
+
+									<a href="javascript:;" class="discus-a" id="discus-a-17779981" timeToPool="2分钟前" lang="17779981"  ><span class="hand-icon icon-discus"></span><b>0</b></a>
+
+
+										<a href="javascript:;" class="collect-a" id="collect-a-17779981" lang="17779981" title="加入私藏" destjid="" jid="padthai"><span class="hand-icon icon-collect"></span><b>私藏</b></a>
+
+
+
+
+										<a href="/user/padthai/submitted/1" class="user-a"><span><img src="./imgs/user.jpg" /></span><b>飞天趴泰神教</b></a>
+
+									<span class="left time-into"><a class="time-a" href="/link/17779981" target="_blank"><b>2分钟前</b></a><i>入热榜</i></span>
+									<!-- 分享各微博的按钮 -->
+
+								</div>
+
+							</div>
+
+						</div>
+
+
+
+        				<div class="item">
+
+
+								<div class="news-pic"><img lang="17773101" original="//img3.chouti.com/0f94d33ea4d40cc481fda9169d941217=C120x120.jpg?quality=80" src="./imgs/17AB7EC02EBC4034B8AC3020C3B7E924_W193H193=C120x120.jpg" alt="抽屉新热榜" /></div>
+
+
+							<div class="null-item"></div>
+
+							<div class="news-content" >
+								<div class="part1">
+										<a href="https://weibo.com/tv/v/G5nuduyt7?fid=1034:315c733cff46f08bbdd3ed6e74e9ff00" class="show-content color-chag" target="_blank" onMouseDown="linksClickStat(17773101);">
+
+
+
+
+
+
+
+													“流民”三部曲最后一部《老唐头》，看完后依旧十分震撼。徐童导演镜头下的人物，那种极具乡土气息的言谈举止，是任何表演大师琢磨多少年都无法模仿企及的，那是自然而然的真情流露，几十年摸爬滚打后的沉淀结晶。老唐头一如当年的骄傲，唐小雁的勇猛豪迈，当这对父女互相炫耀着他们的绝技时，风采很是动人。
+
+
+										</a>
+
+										<span class="content-source">-weibo.com</span>
+
+									<!-- 段子和谣言类别不显示类别名称 -->
+
+										<a href="#" class="n2"><span class="content-kind">42区</span></a>
+
+									<!-- 来源手机客户端 -->
+
+
+
+
+									<!-- 显示话题标签 -->
+
+								</div>
+								<!-- 显示摘要 -->
+
+								<div class="part2" share-pic="http://img3.chouti.com/0f94d33ea4d40cc481fda9169d941217.jpg" share-title='“流民”三部曲最后一部《老唐头》，看完后依旧十分震撼。徐童导演镜头下的人物，那种极具乡土气息的言谈举止，是任何表演大师琢磨多少年都无法模仿企及的，那是自然而然的真情流露，几十年摸爬滚打后的沉淀结晶。老唐头一如当年的骄傲，唐小雁的勇猛豪迈，当这对父女互相炫耀着他们的绝技时，风采很是动人。' share-summary='' share-linkid="17773101" share-subject="42区">
+
+
+
+
+										<a href="javascript:;" class="digg-a" title="推荐"><span class="hand-icon icon-digg"></span><b>62</b><i style="display:none">17773101</i></a>
+
+
+									<a href="javascript:;" class="discus-a" id="discus-a-17773101" timeToPool="2小时31分钟前" lang="17773101"  ><span class="hand-icon icon-discus"></span><b>10</b></a>
+
+
+										<a href="javascript:;" class="collect-a" id="collect-a-17773101" lang="17773101" title="加入私藏" destjid="" jid="wb_5937846452"><span class="hand-icon icon-collect"></span><b>私藏</b></a>
+
+
+
+
+										<a href="/user/wb_5937846452/submitted/1" class="user-a"><span><img src="./imgs/user.jpg" /></span><b>妖猴电影</b></a>
+
+									<span class="left time-into"><a class="time-a" href="/link/17773101" target="_blank"><b>2小时31分钟前</b></a><i>入热榜</i></span>
+									<!-- 分享各微博的按钮 -->
+
+								</div>
+
+							</div>
+
+						</div>       				<div class="item">
+
+								<div class="news-pic"><img lang="17779981" original="//img3.chouti.com/CHOUTI_20180302/17AB7EC02EBC4034B8AC3020C3B7E924_W193H193=C120x120.jpg?quality=80" src="./imgs/17AB7EC02EBC4034B8AC3020C3B7E924_W193H193=C120x120.jpg" alt="抽屉新热榜" /></div>
+
+
+							<div class="null-item"></div>
+
+							<div class="news-content" id="newsContent17779981">
+								<div class="part1">
+										<a href="http://www.qdaily.com/articles/50657.html" class="show-content color-chag" target="_blank" onMouseDown="linksClickStat(17779981);">
+
+
+
+
+
+
+
+													把便利店开到县城去
+
+
+										</a>
+
+										<span class="content-source">-www.qdaily.com</span>
+
+									<!-- 段子和谣言类别不显示类别名称 -->
+
+										<a href="/r/news/hot/1" class="n2"><span class="content-kind">42区</span></a>
+
+									<!-- 来源手机客户端 -->
+
+
+
+
+									<!-- 显示话题标签 -->
+
+								</div>
+								<!-- 显示摘要 -->
+
+								<div class="area-summary">
+										<span class="summary">未来便利店的机会在二三线甚至县级城市，行业内几乎没有人会否认这一观点。但在这里，外资便利店们也同样面临这不小的挑战。</span>
+									</div>
+
+
+								<div class="part2" share-pic="http://img3.chouti.com/CHOUTI_20180307/89B9E740219449518530BCCD21E4F04F_W880H880.jpg" share-title='把便利店开到县城去' share-summary='未来便利店的机会在二三线甚至县级城市，行业内几乎没有人会否认这一观点。但在这里，外资便利店们也同样面临这不小的挑战。' share-linkid="17884881" share-subject="42区">
+
+
+
+
+										<a href="javascript:;" class="digg-a" title="推荐"><span class="hand-icon icon-digg"></span><b>39</b><i style="display:none">17779981</i></a>
+
+
+									<a href="javascript:;" class="discus-a" id="discus-a-1777981" timeToPool="2分钟前" lang="17779981"  ><span class="hand-icon icon-discus"></span><b>0</b></a>
+
+
+										<a href="javascript:;" class="collect-a" id="collect-a-177739981" lang="17779981" title="加入私藏" destjid="" jid="padthai"><span class="hand-icon icon-collect"></span><b>私藏</b></a>
+
+
+
+
+										<a href="/user/padthai/submitted/1" class="user-a"><span><img src="./imgs/user.jpg" /></span><b>飞天趴泰神教</b></a>
+
+									<span class="left time-into"><a class="time-a" href="/link/17779981" target="_blank"><b>2分钟前</b></a><i>入热榜</i></span>
+									<!-- 分享各微博的按钮 -->
+
+								</div>
+
+							</div>
+
+						</div>
+
+
+
+        				<div class="item">
+
+
+								<div class="news-pic"><img lang="17773101" original="//img3.chouti.com/0f94d33ea4d40cc481fda9169d941217=C120x120.jpg?quality=80" src="./imgs/17AB7EC02EBC4034B8AC3020C3B7E924_W193H193=C120x120.jpg" alt="抽屉新热榜" /></div>
+
+
+							<div class="null-item"></div>
+
+							<div class="news-content" id="newsContent1777332101">
+								<div class="part1">
+										<a href="https://weibo.com/tv/v/G5nuduyt7?fid=1034:315c733cff46f08bbdd3ed6e74e9ff00" class="show-content color-chag" target="_blank" onMouseDown="linksClickStat(17773101);">
+
+
+
+
+
+
+
+													“流民”三部曲最后一部《老唐头》，看完后依旧十分震撼。徐童导演镜头下的人物，那种极具乡土气息的言谈举止，是任何表演大师琢磨多少年都无法模仿企及的，那是自然而然的真情流露，几十年摸爬滚打后的沉淀结晶。老唐头一如当年的骄傲，唐小雁的勇猛豪迈，当这对父女互相炫耀着他们的绝技时，风采很是动人。
+
+
+										</a>
+
+										<span class="content-source">-weibo.com</span>
+
+									<!-- 段子和谣言类别不显示类别名称 -->
+
+										<a href="#" class="n2"><span class="content-kind">42区</span></a>
+
+									<!-- 来源手机客户端 -->
+
+
+
+
+									<!-- 显示话题标签 -->
+
+								</div>
+								<!-- 显示摘要 -->
+
+								<div class="part2" share-pic="http://img3.chouti.com/0f94d33ea4d40cc481fda9169d941217.jpg" share-title='“流民”三部曲最后一部《老唐头》，看完后依旧十分震撼。徐童导演镜头下的人物，那种极具乡土气息的言谈举止，是任何表演大师琢磨多少年都无法模仿企及的，那是自然而然的真情流露，几十年摸爬滚打后的沉淀结晶。老唐头一如当年的骄傲，唐小雁的勇猛豪迈，当这对父女互相炫耀着他们的绝技时，风采很是动人。' share-summary='' share-linkid="17773101" share-subject="42区">
+
+
+
+
+										<a href="javascript:;" class="digg-a" title="推荐"><span class="hand-icon icon-digg"></span><b>62</b><i style="display:none">17773101</i></a>
+
+
+									<a href="javascript:;" class="discus-a" id="discus-a-143257773101" timeToPool="2小时31分钟前" lang="17773101"  ><span class="hand-icon icon-discus"></span><b>10</b></a>
+
+
+										<a href="javascript:;" class="collect-a" id="collect-a-177542373101" lang="17773101" title="加入私藏" destjid="" jid="wb_5937846452"><span class="hand-icon icon-collect"></span><b>私藏</b></a>
+
+
+
+
+										<a href="/user/wb_5937846452/submitted/1" class="user-a"><span><img src="./imgs/user.jpg" /></span><b>妖猴电影</b></a>
+
+									<span class="left time-into"><a class="time-a" href="/link/17773101" target="_blank"><b>2小时31分钟前</b></a><i>入热榜</i></span>
+									<!-- 分享各微博的按钮 -->
+
+								</div>
+
+							</div>
+
+						</div>       				<div class="item">
+
+								<div class="news-pic"><img lang="17779981" original="//img3.chouti.com/CHOUTI_20180302/17AB7EC02EBC4034B8AC3020C3B7E924_W193H193=C120x120.jpg?quality=80" src="./imgs/17AB7EC02EBC4034B8AC3020C3B7E924_W193H193=C120x120.jpg" alt="抽屉新热榜" /></div>
+
+
+							<div class="null-item"></div>
+
+							<div class="news-content" id="newsContent177799432581">
+								<div class="part1">
+										<a href="http://www.qdaily.com/articles/50657.html" class="show-content color-chag" target="_blank" onMouseDown="linksClickStat(17779981);">
+
+
+
+
+
+
+
+													把便利店开到县城去
+
+
+										</a>
+
+										<span class="content-source">-www.qdaily.com</span>
+
+									<!-- 段子和谣言类别不显示类别名称 -->
+
+										<a href="/r/news/hot/1" class="n2"><span class="content-kind">42区</span></a>
+
+									<!-- 来源手机客户端 -->
+
+
+
+
+									<!-- 显示话题标签 -->
+
+								</div>
+								<!-- 显示摘要 -->
+
+								<div class="area-summary">
+										<span class="summary">未来便利店的机会在二三线甚至县级城市，行业内几乎没有人会否认这一观点。但在这里，外资便利店们也同样面临这不小的挑战。</span>
+									</div>
+
+
+								<div class="part2" share-pic="http://img3.chouti.com/CHOUTI_20180307/89B9E740219449518530BCCD21E4F04F_W880H880.jpg" share-title='把便利店开到县城去' share-summary='未来便利店的机会在二三线甚至县级城市，行业内几乎没有人会否认这一观点。但在这里，外资便利店们也同样面临这不小的挑战。' share-linkid="17884881" share-subject="42区">
+
+
+
+
+										<a href="javascript:;" class="digg-a" title="推荐"><span class="hand-icon icon-digg"></span><b>39</b><i style="display:none">17779981</i></a>
+
+
+									<a href="javascript:;" class="discus-a" id="discus-a-177542379981" timeToPool="2分钟前" lang="17779981"  ><span class="hand-icon icon-discus"></span><b>0</b></a>
+
+
+										<a href="javascript:;" class="collect-a" id="collect-a-1775432579981" lang="17779981" title="加入私藏" destjid="" jid="padthai"><span class="hand-icon icon-collect"></span><b>私藏</b></a>
+
+
+
+
+										<a href="/user/padthai/submitted/1" class="user-a"><span><img src="./imgs/user.jpg" /></span><b>飞天趴泰神教</b></a>
+
+									<span class="left time-into"><a class="time-a" href="/link/17779981" target="_blank"><b>2分钟前</b></a><i>入热榜</i></span>
+									<!-- 分享各微博的按钮 -->
+
+								</div>
+
+							</div>
+
+						</div>
+
+
+
+        				<div class="item">
+
+
+								<div class="news-pic"><img lang="17773101" original="//img3.chouti.com/0f94d33ea4d40cc481fda9169d941217=C120x120.jpg?quality=80" src="./imgs/17AB7EC02EBC4034B8AC3020C3B7E924_W193H193=C120x120.jpg" alt="抽屉新热榜" /></div>
+
+
+							<div class="null-item"></div>
+
+							<div class="news-content" id="newsConten5t154237773101">
+								<div class="part1">
+										<a href="https://weibo.com/tv/v/G5nuduyt7?fid=1034:315c733cff46f08bbdd3ed6e74e9ff00" class="show-content color-chag" target="_blank" onMouseDown="linksClickStat(17773101);">
+
+
+
+
+
+
+
+													“流民”三部曲最后一部《老唐头》，看完后依旧十分震撼。徐童导演镜头下的人物，那种极具乡土气息的言谈举止，是任何表演大师琢磨多少年都无法模仿企及的，那是自然而然的真情流露，几十年摸爬滚打后的沉淀结晶。老唐头一如当年的骄傲，唐小雁的勇猛豪迈，当这对父女互相炫耀着他们的绝技时，风采很是动人。
+
+
+										</a>
+
+										<span class="content-source">-weibo.com</span>
+
+									<!-- 段子和谣言类别不显示类别名称 -->
+
+										<a href="#" class="n2"><span class="content-kind">42区</span></a>
+
+									<!-- 来源手机客户端 -->
+
+
+
+
+									<!-- 显示话题标签 -->
+
+								</div>
+								<!-- 显示摘要 -->
+
+								<div class="part2" share-pic="http://img3.chouti.com/0f94d33ea4d40cc481fda9169d941217.jpg" share-title='“流民”三部曲最后一部《老唐头》，看完后依旧十分震撼。徐童导演镜头下的人物，那种极具乡土气息的言谈举止，是任何表演大师琢磨多少年都无法模仿企及的，那是自然而然的真情流露，几十年摸爬滚打后的沉淀结晶。老唐头一如当年的骄傲，唐小雁的勇猛豪迈，当这对父女互相炫耀着他们的绝技时，风采很是动人。' share-summary='' share-linkid="17773101" share-subject="42区">
+
+
+
+
+										<a href="javascript:;" class="digg-a" title="推荐"><span class="hand-icon icon-digg"></span><b>62</b><i style="display:none">17773101</i></a>
+
+
+									<a href="javascript:;" class="discus-a" id="discus-a-154237773101" timeToPool="2小时31分钟前" lang="17773101"  ><span class="hand-icon icon-discus"></span><b>10</b></a>
+
+
+										<a href="javascript:;" class="collect-a" id="collect-a-177546273101" lang="17773101" title="加入私藏" destjid="" jid="wb_5937846452"><span class="hand-icon icon-collect"></span><b>私藏</b></a>
+
+
+
+
+										<a href="/user/wb_5937846452/submitted/1" class="user-a"><span><img src="./imgs/user.jpg" /></span><b>妖猴电影</b></a>
+
+									<span class="left time-into"><a class="time-a" href="/link/17773101" target="_blank"><b>2小时31分钟前</b></a><i>入热榜</i></span>
+									<!-- 分享各微博的按钮 -->
+
+								</div>
+
+							</div>
+
+						</div>       				<div class="item">
+
+								<div class="news-pic"><img lang="17779981" original="//img3.chouti.com/CHOUTI_20180302/17AB7EC02EBC4034B8AC3020C3B7E924_W193H193=C120x120.jpg?quality=80" src="./imgs/17AB7EC02EBC4034B8AC3020C3B7E924_W193H193=C120x120.jpg" alt="抽屉新热榜" /></div>
+
+
+							<div class="null-item"></div>
+
+							<div class="news-content" id="newsContent542317779981">
+								<div class="part1">
+										<a href="http://www.qdaily.com/articles/50657.html" class="show-content color-chag" target="_blank" onMouseDown="linksClickStat(17779981);">
+
+
+
+
+
+
+
+													把便利店开到县城去
+
+
+										</a>
+
+										<span class="content-source">-www.qdaily.com</span>
+
+									<!-- 段子和谣言类别不显示类别名称 -->
+
+										<a href="/r/news/hot/1" class="n2"><span class="content-kind">42区</span></a>
+
+									<!-- 来源手机客户端 -->
+
+
+
+
+									<!-- 显示话题标签 -->
+
+								</div>
+								<!-- 显示摘要 -->
+
+								<div class="area-summary">
+										<span class="summary">未来便利店的机会在二三线甚至县级城市，行业内几乎没有人会否认这一观点。但在这里，外资便利店们也同样面临这不小的挑战。</span>
+									</div>
+
+
+								<div class="part2" share-pic="http://img3.chouti.com/CHOUTI_20180307/89B9E740219449518530BCCD21E4F04F_W880H880.jpg" share-title='把便利店开到县城去' share-summary='未来便利店的机会在二三线甚至县级城市，行业内几乎没有人会否认这一观点。但在这里，外资便利店们也同样面临这不小的挑战。' share-linkid="17884881" share-subject="42区">
+
+
+
+
+										<a href="javascript:;" class="digg-a" title="推荐"><span class="hand-icon icon-digg"></span><b>39</b><i style="display:none">17779981</i></a>
+
+
+									<a href="javascript:;" class="discus-a" id="discus-a-177524379981" timeToPool="2分钟前" lang="17779981"  ><span class="hand-icon icon-discus"></span><b>0</b></a>
+
+
+										<a href="javascript:;" class="collect-a" id="collect-a-1754235779981" lang="17779981" title="加入私藏" destjid="" jid="padthai"><span class="hand-icon icon-collect"></span><b>私藏</b></a>
+
+
+
+
+										<a href="/user/padthai/submitted/1" class="user-a"><span><img src="./imgs/user.jpg" /></span><b>飞天趴泰神教</b></a>
+
+									<span class="left time-into"><a class="time-a" href="/link/17779981" target="_blank"><b>2分钟前</b></a><i>入热榜</i></span>
+									<!-- 分享各微博的按钮 -->
+
+								</div>
+
+							</div>
+
+						</div>
+
+
+
+        				<div class="item">
+
+
+								<div class="news-pic"><img lang="17773101" original="//img3.chouti.com/0f94d33ea4d40cc481fda9169d941217=C120x120.jpg?quality=80" src="./imgs/17AB7EC02EBC4034B8AC3020C3B7E924_W193H193=C120x120.jpg" alt="抽屉新热榜" /></div>
+
+
+							<div class="null-item"></div>
+
+							<div class="news-content" id="newsContent1754235773101">
+								<div class="part1">
+										<a href="https://weibo.com/tv/v/G5nuduyt7?fid=1034:315c733cff46f08bbdd3ed6e74e9ff00" class="show-content color-chag" target="_blank" onMouseDown="linksClickStat(17773101);">
+
+
+
+
+
+
+
+													“流民”三部曲最后一部《老唐头》，看完后依旧十分震撼。徐童导演镜头下的人物，那种极具乡土气息的言谈举止，是任何表演大师琢磨多少年都无法模仿企及的，那是自然而然的真情流露，几十年摸爬滚打后的沉淀结晶。老唐头一如当年的骄傲，唐小雁的勇猛豪迈，当这对父女互相炫耀着他们的绝技时，风采很是动人。
+
+
+										</a>
+
+										<span class="content-source">-weibo.com</span>
+
+									<!-- 段子和谣言类别不显示类别名称 -->
+
+										<a href="#" class="n2"><span class="content-kind">42区</span></a>
+
+									<!-- 来源手机客户端 -->
+
+
+
+
+									<!-- 显示话题标签 -->
+
+								</div>
+								<!-- 显示摘要 -->
+
+								<div class="part2" share-pic="http://img3.chouti.com/0f94d33ea4d40cc481fda9169d941217.jpg" share-title='“流民”三部曲最后一部《老唐头》，看完后依旧十分震撼。徐童导演镜头下的人物，那种极具乡土气息的言谈举止，是任何表演大师琢磨多少年都无法模仿企及的，那是自然而然的真情流露，几十年摸爬滚打后的沉淀结晶。老唐头一如当年的骄傲，唐小雁的勇猛豪迈，当这对父女互相炫耀着他们的绝技时，风采很是动人。' share-summary='' share-linkid="17773101" share-subject="42区">
+
+
+
+
+										<a href="javascript:;" class="digg-a" title="推荐"><span class="hand-icon icon-digg"></span><b>62</b><i style="display:none">17773101</i></a>
+
+
+									<a href="javascript:;" class="discus-a" id="discus-a-17775423101" timeToPool="2小时31分钟前" lang="17773101"  ><span class="hand-icon icon-discus"></span><b>10</b></a>
+
+
+										<a href="javascript:;" class="collect-a" id="collect-a-177731542301" lang="17773101" title="加入私藏" destjid="" jid="wb_5937846452"><span class="hand-icon icon-collect"></span><b>私藏</b></a>
+
+
+
+
+										<a href="/user/wb_5937846452/submitted/1" class="user-a"><span><img src="./imgs/user.jpg" /></span><b>妖猴电影</b></a>
+
+									<span class="left time-into"><a class="time-a" href="/link/17773101" target="_blank"><b>2小时31分钟前</b></a><i>入热榜</i></span>
+									<!-- 分享各微博的按钮 -->
+
+								</div>
+
+							</div>
+
+						</div>       				<div class="item">
+
+								<div class="news-pic"><img lang="17779981" original="//img3.chouti.com/CHOUTI_20180302/17AB7EC02EBC4034B8AC3020C3B7E924_W193H193=C120x120.jpg?quality=80" src="./imgs/17AB7EC02EBC4034B8AC3020C3B7E924_W193H193=C120x120.jpg" alt="抽屉新热榜" /></div>
+
+
+							<div class="null-item"></div>
+
+							<div class="news-content" id="newsContent177799542381">
+								<div class="part1">
+										<a href="http://www.qdaily.com/articles/50657.html" class="show-content color-chag" target="_blank" onMouseDown="linksClickStat(17779981);">
+
+
+
+
+
+
+
+													把便利店开到县城去
+
+
+										</a>
+
+										<span class="content-source">-www.qdaily.com</span>
+
+									<!-- 段子和谣言类别不显示类别名称 -->
+
+										<a href="/r/news/hot/1" class="n2"><span class="content-kind">42区</span></a>
+
+									<!-- 来源手机客户端 -->
+
+
+
+
+									<!-- 显示话题标签 -->
+
+								</div>
+								<!-- 显示摘要 -->
+
+								<div class="area-summary">
+										<span class="summary">未来便利店的机会在二三线甚至县级城市，行业内几乎没有人会否认这一观点。但在这里，外资便利店们也同样面临这不小的挑战。</span>
+									</div>
+
+
+								<div class="part2" share-pic="http://img3.chouti.com/CHOUTI_20180307/89B9E740219449518530BCCD21E4F04F_W880H880.jpg" share-title='把便利店开到县城去' share-summary='未来便利店的机会在二三线甚至县级城市，行业内几乎没有人会否认这一观点。但在这里，外资便利店们也同样面临这不小的挑战。' share-linkid="17884881" share-subject="42区">
+
+
+
+
+										<a href="javascript:;" class="digg-a" title="推荐"><span class="hand-icon icon-digg"></span><b>39</b><i style="display:none">17779981</i></a>
+
+
+									<a href="javascript:;" class="discus-a" id="discus-a-177799854321" timeToPool="2分钟前" lang="17779981"  ><span class="hand-icon icon-discus"></span><b>0</b></a>
+
+
+										<a href="javascript:;" class="collect-a" id="collect-a-177799865341" lang="17779981" title="加入私藏" destjid="" jid="padthai"><span class="hand-icon icon-collect"></span><b>私藏</b></a>
+
+
+
+
+										<a href="/user/padthai/submitted/1" class="user-a"><span><img src="./imgs/user.jpg" /></span><b>飞天趴泰神教</b></a>
+
+									<span class="left time-into"><a class="time-a" href="/link/17779981" target="_blank"><b>2分钟前</b></a><i>入热榜</i></span>
+									<!-- 分享各微博的按钮 -->
+
+								</div>
+
+							</div>
+
+						</div>
+
+
+
+        				<div class="item">
+
+
+								<div class="news-pic"><img lang="17773101" original="//img3.chouti.com/0f94d33ea4d40cc481fda9169d941217=C120x120.jpg?quality=80" src="./imgs/17AB7EC02EBC4034B8AC3020C3B7E924_W193H193=C120x120.jpg" alt="抽屉新热榜" /></div>
+
+
+							<div class="null-item"></div>
+
+							<div class="news-content" id="newsContent17773101">
+								<div class="part1">
+										<a href="https://weibo.com/tv/v/G5nuduyt7?fid=1034:315c733cff46f08bbdd3ed6e74e9ff00" class="show-content color-chag" target="_blank" onMouseDown="linksClickStat(17773101);">
+
+
+
+
+
+
+
+													“流民”三部曲最后一部《老唐头》，看完后依旧十分震撼。徐童导演镜头下的人物，那种极具乡土气息的言谈举止，是任何表演大师琢磨多少年都无法模仿企及的，那是自然而然的真情流露，几十年摸爬滚打后的沉淀结晶。老唐头一如当年的骄傲，唐小雁的勇猛豪迈，当这对父女互相炫耀着他们的绝技时，风采很是动人。
+
+
+										</a>
+
+										<span class="content-source">-weibo.com</span>
+
+									<!-- 段子和谣言类别不显示类别名称 -->
+
+										<a href="#" class="n2"><span class="content-kind">42区</span></a>
+
+									<!-- 来源手机客户端 -->
+
+
+
+
+									<!-- 显示话题标签 -->
+
+								</div>
+								<!-- 显示摘要 -->
+
+								<div class="part2" share-pic="http://img3.chouti.com/0f94d33ea4d40cc481fda9169d941217.jpg" share-title='“流民”三部曲最后一部《老唐头》，看完后依旧十分震撼。徐童导演镜头下的人物，那种极具乡土气息的言谈举止，是任何表演大师琢磨多少年都无法模仿企及的，那是自然而然的真情流露，几十年摸爬滚打后的沉淀结晶。老唐头一如当年的骄傲，唐小雁的勇猛豪迈，当这对父女互相炫耀着他们的绝技时，风采很是动人。' share-summary='' share-linkid="17773101" share-subject="42区">
+
+
+
+
+										<a href="javascript:;" class="digg-a" title="推荐"><span class="hand-icon icon-digg"></span><b>62</b><i style="display:none">17773101</i></a>
+
+
+									<a href="javascript:;" class="discus-a" id="discus-a-177765433101" timeToPool="2小时31分钟前" lang="17773101"  ><span class="hand-icon icon-discus"></span><b>10</b></a>
+
+
+										<a href="javascript:;" class="collect-a" id="collect-a-165347773101" lang="17773101" title="加入私藏" destjid="" jid="wb_5937846452"><span class="hand-icon icon-collect"></span><b>私藏</b></a>
+
+
+
+
+										<a href="/user/wb_5937846452/submitted/1" class="user-a"><span><img src="./imgs/user.jpg" /></span><b>妖猴电影</b></a>
+
+									<span class="left time-into"><a class="time-a" href="/link/17773101" target="_blank"><b>2小时31分钟前</b></a><i>入热榜</i></span>
+									<!-- 分享各微博的按钮 -->
+
+								</div>
+
+							</div>
+
+						</div>
+
+
+			</div>
+			<div class="no-bottom"></div>
+			<div id="page-area" class="page-area">
+					 <div id="dig_lcpage"><ul><li><span class='ct_pagepw'>1</span></li><li><a href='/all/hot/recent/2' class='ct_pagepa'>2</a></li><li><a href='/all/hot/recent/3' class='ct_pagepa'>3</a></li><li><a href='/all/hot/recent/4' class='ct_pagepa'>4</a></li><li><a href='/all/hot/recent/5' class='ct_pagepa'>5</a></li><li><a href='/all/hot/recent/6' class='ct_pagepa'>6</a></li><li><a href='/all/hot/recent/7' class='ct_pagepa'>7</a></li><li><a href='/all/hot/recent/8' class='ct_pagepa'>8</a></li><li><a href='/all/hot/recent/9' class='ct_pagepa'>9</a></li><li><a href='/all/hot/recent/10' class='ct_pagepa'>10</a></li><li><a href='/all/hot/recent/2' class='ct_page_edge'>下一页</a></li></ul></div>
+			</div>
+
+		</div>
+
+	</div>
+
+
+   <div class="footer-band" id="footer-band">
+
+
+<!-- -->
+<div class="foot-nav">
+    <div style="display:none" id="y-destjid"></div>
+    <div style="display:none" id="y-destnick"></div>
+    <a href="/help/about" target="_blank">关于我们</a><span>|</span><a href="/help/contact"
+                                                                   target="_blank">联系我们</a><span>|</span><a href="/help/service" target="_blank">服务条款</a><span>|</span><a
+        href="/help/privacy" target="_blank">隐私政策</a><span>|</span><a href="/help/tool"
+                                                                      target="_blank">抽屉新热榜工具</a><span>|</span><!--<a href="http://img.chouti.com/toolsffcj.html"
+        target="_blank">浏览器插件</a><span>|</span>--><a href="/download/model" target="_blank">下载客户端</a><span>|</span><a
+        href="/feedback" target="_blank">意见与反馈</a><span>|</span><a href="/help/goodlink"
+                                                                   target="_blank">友情链接</a><span>|</span><a
+        href="http://www.shouye.com/Index.do?method=show&pageId=44251&jid=xinrebang@gozap.com"
+        target="_blank">公告</a><!--<span>|</span><a href="/points/gifts" target="_blank">积分商城</a>-->
+    <a href="http://dig.chouti.com/feed.xml" target="_blank" style="margin-left:0;vertical-align:-2px;"
+       title="Rss订阅，Feed地址：http://dig.chouti.com/feed.xml"><img src="./imgs/ct_rss.gif" width="36" height="14"></a>
+</div>
+<div class="foot-nav2">
+    <a target="_blank" href="http://www.gozap.com/"><img class="foot_e" src="./imgs/gozap.gif"></a>
+    <span class="foot_d">旗下站点</span>
+    <span class="foot_a">&copy;2018
+        chouti.com</span>
+    <a target="_blank" href="http://www.miibeian.gov.cn/" class="foot_b">京ICP备09053974号-3 京公网安备 110102004562</a>
+    <div style="margin-top:6px;">
+        <span class="foot_d">违法和不良信息举报：</span>
+        <span class="foot_a">电话：010-58302039  </span>
+        <span class="foot_a" style="margin-left: 15px;">邮箱：<a style="color: #369;margin-right: 10px;" href="mailto:jubao@chouti.com">jubao@chouti.com</a> </span>
+    </div>
+    <div style="margin-top:6px;">版权所有：北京格致璞科技有限公司</div>
+</div>
+
+
+	</div>
+</div>
+
+
+</body>
+</html>
