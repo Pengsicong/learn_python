@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>页面拖动</title>
+</head>
+<body>
+    <div style="border: 1px red; width: 600px; position: absolute; ">
+        <div class="title" style="background: gray; height: 50px; text-align: center">title</div>
+        <div class="content" style="background: salmon; height: 300px; text-align: center">内容</div>
+
+    </div>
+<script src="jquery-3.3.1.js"></script>
+<script>
+    $('.title').mouseover(function () {
+        $(this).css('cursor', 'move')
+    }).mousedown(function (e) {
+        var mousedown_x = e.clientX;
+        var mousedown_y = e.clientY;
+
+        var current_offse_left = $(this).parent().offset().left;
+        var current_offse_top = $(this).parent().offset().top;
+
+        $(this).mousemove(function (e) {
+            var move_x = e.clientX - mousedown_x;
+            var move_y = e.clientY - mousedown_y;
+
+            var new_x = move_x + current_offse_left;
+            var new_y = move_y + current_offse_top;
+            $(this).parent().css('left', new_x + 'px');
+            $(this).parent().css('top', new_y + 'px');
+
+        });
+
+        $(this).mouseout(function () {
+            $(this).unbind('mousemove')
+        });
+        $(this).mouseup(function () {
+            $(this).unbind('mousemove')
+        })
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>window对象</title>
+    <script>
+
+        var ID;
+        function showtime() {
+            var time =new Date().toLocaleString();
+            var ret = document.getElementById('clock');
+            ret.value = time
+        }
+        function begin() {
+            end();
+            showtime();
+            ID = setInterval(showtime, 1000);
+            console.log(ID);
+
+        }
+        function end() {
+            clearInterval(ID);
+            console.log(ID)
+        }
+    </script>
+</head>
+<body>
+
+<input type="text" id="clock">
+<input type="button" value="begin" onclick="begin()">
+<input type="button" value="end"  onclick="end()">
+
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>清除浮动</title>
+    <style>
+        .left{
+            float: left;
+        }
+        .container{
+            background: red;
+        }
+        .container .item{
+            width: 180px;
+            height: 150px;
+            background: #ff9999;
+            border: 1px solid red;
+        }
+        .clearfix:after{
+            content: '.';
+            display: block;
+            clear: both;
+            visibility: hidden;
+            height: 0;
+        }
+
+    </style>
+</head>
+<body>
+<div class="container clearfix">
+    <div class="item left"></div>
+    <div class="item left"></div>
+    <div class="item left"></div>
+    <div class="item left"></div>
+    <div class="item left"></div>
+    <!--<div style="clear: both;"></div>-->
+</div>
+<div>底部</div>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>显示隐藏操作</title>
+</head>
+<body>
+<p>hello world!</p>
+<p>hello world!</p>
+<p>hello world!</p>
+<input class="show" type="button" value="show">
+<input class="hide" type="button" value="hide">
+<input class="toggle" type="button" value="toggle">
+<script src="jquery-3.3.1.js"></script>
+<script>
+    $('.show').click(function () {
+        $('p').show(500)
+    });
+    $('.hide').click(function () {
+        $('p').hide(500)
+    });
+    $('.toggle').click(function () {
+        $('p').toggle(500)
+    })
+</script>
+</body>
+</html>

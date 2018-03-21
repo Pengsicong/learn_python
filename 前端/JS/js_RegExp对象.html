@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>js_RegExp对象</title>
+    <script>
+        <!--g表示全局有效, i表示不区分大小写-->
+//        var re_obj = new RegExp("\\d+", "g");
+//        alert(re_obj.test("s"));
+//        var re_obj2 = /\d+/g;
+//        alert(re_obj2.test("s123"));
+
+
+        var s = "hello123world456";
+//        取出所有匹配结果
+        alert(s.match(/\d+/g));
+//        取出第一个匹配结果的索引值
+        alert(s.search(/\d+/g));
+        alert(s.split(/\d+/g));
+        alert(s.replace(/\d+/g, "##"));
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

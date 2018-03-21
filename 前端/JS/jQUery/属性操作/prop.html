@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>prop</title>
+    <script src="../jquery-3.3.1.js"></script>
+    <script>
+        function selectAll() {
+//            $("table :checkbox").each(function () {
+//                $(this).prop('checked', true)
+//            })
+
+            $("input[type='checkbox']").prop('checked', true);
+        }
+        function cancel() {
+//            $("table :checkbox").each(function () {
+//                $(this).prop('checked', false)
+//            })
+
+            $("input[type='checkbox']").prop('checked', false);
+        }
+        function reverse() {
+            $("input[type='checkbox']").each(function () {
+                if ($(this).prop('checked')) {
+                    $(this).prop('checked', false)
+                }
+                else{
+                    $(this).prop('checked', true)
+                }
+            })
+        }
+    </script>
+</head>
+<body>
+<button onclick="selectAll()">全选</button>
+<button onclick="cancel()">取消</button>
+<button onclick="reverse()">反选</button>
+<table border="1">
+    <tr>
+        <td>
+            <input type="checkbox">
+        </td>
+        <td>
+            111
+        </td>
+    </tr> <tr>
+        <td>
+            <input type="checkbox">
+        </td>
+        <td>
+            222
+        </td>
+    </tr> <tr>
+        <td>
+            <input type="checkbox">
+        </td>
+        <td>
+            333
+        </td>
+    </tr>
+</table>
+</body>
+</html>

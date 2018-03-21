@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>两种拓展方法</title>
+</head>
+<body>
+<p>hello world</p>
+<script src="jquery-3.3.1.js"></script>
+<script>
+//    不带标签的拓展方法, 类方法, jQuery私有域写法
+    (function ($) {
+        $.extend({
+            getMax: function (a, b) {
+                return a > b ? a : b;
+            }
+        });
+    })(jQuery);
+
+    console.log($.getMax(3, 4));
+
+//    带标签的拓展方法, 实例方法, 私有域写法
+    (function () {
+        $.fn.extend({
+            print: function () {
+                console.log($(this).text())
+            }
+        });
+    })();
+
+
+    $('p').print()
+</script>
+</body>
+</html>

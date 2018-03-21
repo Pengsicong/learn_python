@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>滚动滑轮事件</title>
+    <script src="./jquery-3.3.1.js"></script>
+    <script>
+        window.onscroll =  function () {
+            var scrollTop = $(window).scrollTop();
+
+//            var pos = document.documentElement.scrollTop || window.pageYOffset || document.body.scrollTop;
+
+            if (scrollTop>$("#content :first").offset().top){
+                $("#menu").addClass('fix')
+            }
+            else{
+                $('#menu').removeClass('fix')
+            }
+
+            $("#content").children().each(function () {
+                var top = $(this).offset().top;
+                var top_scrollTop = top - scrollTop;
+                if (top_scrollTop <= 0 && -top_scrollTop < $(this).outerHeight(true)){
+                    var active_id =  this.id;
+                    $("div.menu ." + active_id).addClass("active").siblings().removeClass("active");
+                }
+
+            if ($(window).height() + scrollTop >= $(document).height()){
+                    $("div.menu :last").addClass("active").siblings().removeClass("active")
+            }
+    })
+        }
+    </script>
+    <style>
+        a{
+            text-decoration: none;
+        }
+        #menu a{
+            display: block;
+        }
+        a.active{
+            background: blue;
+            color: white;
+        }
+        .menu{
+            position: absolute; left: 200px; width: 220px; top: 48px; bottom: 0; border-left: 1px solid blue;
+        }
+        .fix{
+            position: fixed;
+            top: 0;
+        }
+
+    </style>
+</head>
+<body style="margin: 0;">
+<div style="height: 48px; background: darkslategray;">
+
+</div>
+<div id="menu" class="menu">
+    <a href="#c1" class="c1 active">项目一</a>
+    <a href="#c2" class="c2">项目二</a>
+    <a href="#c3" class="c3">项目三</a>
+    <a href="#c4" class="c4">项目四</a>
+    <a href="#c5" class="c5">项目五</a>
+</div>
+<div id="content" style="position: absolute; left: 420px; right: 200px; top: 48px; bottom: 0; ">
+    <div id="c1"  style="height: 900px; background: yellow; "></div>
+    <div id="c2" style="height: 900px; background: darkcyan; "></div>
+    <div id="c3"  style="height: 900px; background: skyblue; "></div>
+    <div id="c4"  style="height: 900px; background: seagreen; "></div>
+    <div id="c5"  style="height: 100px; background: rebeccapurple; "></div>
+</div>
+<div onclick="return_top()" style="cursor: pointer; position: fixed; bottom: 0; right: 0; background: salmon; height: 20px; width: 80px;">返回顶部</div>
+<script>
+function return_top() {
+//    $(window).scrollTop(0);
+    var animate_time = $(window).scrollTop()/3;
+    $('html, body').animate({scrollTop: 0}, animate_time);
+    console.log(animate_time);
+}
+</script>
+</body>
+</html>

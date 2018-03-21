@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>hover的用法</title>
+    <style>
+        .left{
+            float: left;
+        }
+        .container{
+            background: red;
+        }
+        .container .item{
+            width: 180px;
+            height: 150px;
+            background: #ff9999;
+            border: 1px solid red;
+            overflow: hidden;
+            position: relative;
+        }
+        .clearfix:after{
+            content: ".";
+            clear: both;
+            height: 0;
+            display: block;
+            visibility: hidden;
+        }
+        .hide{
+            display: none;
+        }
+        .container .item:hover .text{
+            display: block;
+        }
+
+    </style>
+</head>
+<body>
+
+
+<div class="container clearfix">
+    <div class="item left">
+        <div class="bg">
+            <img style="height: 150px; width: 180px;" src="topBG.jpg">
+        </div>
+        <div class="text hide">
+            <div style="z-index: 10;position: absolute; left: 0; right: 0; top: 0; bottom: 0; background: gray; opacity: 0.8;"></div>
+            <div style="z-index: 100;position: absolute; left: 0; right: 0; top: 0; bottom: 0;">text text</div>
+        </div>
+    </div>
+    <div class="item left">
+        <div class="bg">
+            <img style="height: 150px; width: 180px;" src="topBG.jpg">
+        </div>
+        <div class="text hide">
+            <div style="z-index: 10;position: absolute; left: 0; right: 0; top: 0; bottom: 0; background: gray; opacity: 0.8;"></div>
+            <div style="z-index: 100;position: absolute; left: 0; right: 0; top: 0; bottom: 0;">text text</div>
+        </div>
+    </div>
+    <div class="item left">
+        <div class="bg">
+            <img style="height: 150px; width: 180px;" src="topBG.jpg">
+        </div>
+        <div class="text hide">
+            <div style="z-index: 10;position: absolute; left: 0; right: 0; top: 0; bottom: 0; background: gray; opacity: 0.8;"></div>
+            <div style="z-index: 100;position: absolute; left: 0; right: 0; top: 0; bottom: 0;">text text</div>
+        </div>
+    </div>
+
+
+</div>
+</body>
+</html>
