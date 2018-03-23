@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>轮播图</title>
+    <style>
+        *{
+            margin: 0;
+        }
+        .img a{
+            display: inline-block;
+            position: absolute;
+            top: 0;
+        }
+        .outer{
+            margin: 0 auto;
+            position: relative;
+            height: 470px;
+            width: 590px;
+
+        }
+        .slide-bar{
+            position: absolute;
+            bottom: 0;
+            left: 35%;
+            width: 100%;
+        }
+
+        .slide-bar i{
+            display: inline-block;
+            background: skyblue;
+            color: white;
+            width: 15px;
+            border-radius: 50%;
+            height: 15px;
+            margin:0 10px;
+            opacity:0.6;
+        }
+        .btn{
+            position: absolute;
+            width: 20px;
+            background: gray;
+            color: white;
+            line-height: 60px;
+            text-align: center;
+            bottom: 40%;
+            opacity: 0.6;
+        }
+        .left_btn{
+            left: 0;
+        }
+        .right_bth{
+            right: 0;
+        }
+        .btn:hover, .slide-bar i:hover{
+            opacity: 0.9;
+        }
+        .outer .slide-bar .current{
+            background: slateblue;
+        }
+    </style>
+</head>
+<body>
+<div class="outer">
+    <div class="img">
+        <a ><img src="./img/1.jpg"> </a>
+        <a ><img src="./img/2.jpg"> </a>
+        <a ><img src="./img/3.jpg"> </a>
+        <a ><img src="./img/4.jpg"> </a>
+    </div>
+    <div class="slide-bar">
+    <i class="img1 current"></i>
+    <i class="img2"></i>
+    <i class="img3"></i>
+    <i class="img4"></i>
+    </div>
+    <div class="btn left_btn"><</div>
+    <div class="btn right_bth">></div>
+</div>
+
+<script src="jquery-3.3.1.js"></script>
+<script>
+    $('.slide-bar i').mouseover(function () {
+        $(this).addClass('current').siblings().removeClass('current');
+        var index = $(this).index();
+        $('.img a').eq(index).fadeIn(1000).siblings().fadeOut(1000);
+
+    });
+
+    var time = setInterval(move, 2000, true);
+
+    function move(forward) {
+        var index = $('.slide-bar i.current').index();
+        if (forward){
+            index = (index + 1) % $('.slide-bar i').length;
+        }
+        else{
+            var i_length = $('.slide-bar i').length;
+            index = (index - 1 + i_length) % i_length;
+        }
+        console.log(index);
+
+        $('.slide-bar i').eq(index).addClass('current').siblings().removeClass('current');
+
+        $('.img a').eq(index).stop().fadeIn(1000).siblings().stop().fadeOut(1000);
+    }
+    $('.slide-bar i, .btn').hover(function () {
+        clearInterval(time)
+    }, function () {
+        time = setInterval(move, 2000, true)
+    })
+    $('.left_btn').click(function () {
+        move(false);
+    });
+    $('.right_bth').click(function () {
+        move(true);
+    })
+</script>
+
+</body>
+</html>
