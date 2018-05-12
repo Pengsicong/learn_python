@@ -1,4 +1,4 @@
-#!/usr/bin/env python  
+n#!/usr/bin/env python
 # encoding: utf-8  
 
 """ 
@@ -13,6 +13,10 @@ Copyright © 2017年 彭思聪. All rights reserved.
 """
 闭包                          
     定义：如果在一个内部函数里，对在 外部作用域（但不是在全局作用域）的变量进行引用，那么内部函数就被认为是闭包(closure).
+    
+开放封闭原则:
+    开放: 对拓展开放
+    封闭: 对已经实现功能的代码块
 """
 
 
