@@ -10,7 +10,7 @@ Copyright © 2017年 彭思聪. All rights reserved.
 
 """  
 
-from multiprocessing import Process, Pool
+from multiprocessing import Pool
 import time
 
 """
@@ -27,10 +27,10 @@ import time
 """
 
 
-def func(msg):
-    print("msg:", msg)
+def func(my_msg):
+    print("my_msg:", my_msg)
     time.sleep(3)
-    print("end")
+    print("end", my_msg)
 
 
 if __name__ == "__main__":

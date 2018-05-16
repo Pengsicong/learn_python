@@ -10,7 +10,8 @@ Copyright © 2017年 彭思聪. All rights reserved.
 
 """
 
-from multiprocessing import Process, Queue, Pipe, Manager
+from multiprocessing import Process, Queue, Pipe, Manager, Pool
+import time
 
 """
 不同进程间内存是不共享的，要想实现两个进程间的数据交换，可以用以下方法：
@@ -37,12 +38,14 @@ def foo_queue(queue):
     print('foo q id:%s' % id(queue))
     for _ in range(30):
         queue.put('foo')
+        time.sleep(0.001)
 
 
 def bar_queue(queue):
     print('bar q id: %s' % id(queue))
     for _ in range(30):
         queue.put('bar')
+        time.sleep(0.001)
 
 
 def foo_pipe(conn):
@@ -69,6 +72,26 @@ def test_queue():
 
     p1.join()
     p2.join()
+
+    qsize = 0
+    while not q.empty():
+        print(q.get())
+        qsize += 1
+
+    print('qsize: %s' % qsize)
+
+
+def test_queue_by_pool():
+    q = Manager().Queue()
+
+    pool = Pool()
+
+    print('main q id: %s' % id(q))
+    pool.apply_async(foo_queue, (q,))
+    pool.apply_async(bar_queue, (q,))
+
+    pool.close()
+    pool.join()
 
     qsize = 0
     while not q.empty():
@@ -160,5 +183,6 @@ def test_manager():
 
 if __name__ == '__main__':
     # test_queue()
+    test_queue_by_pool()
     # test_pipe()
-    test_manager()
+    # test_manager()

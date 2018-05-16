@@ -56,9 +56,10 @@ def show_perf(func):
         print('%s process parrent: \033[32;1m%s\033[0m, process id: \033[33;1m%s\033[0m'
               % (wrapper.__name__, os.getppid(), os.getpid()))
         start = time.time()
-        func(*args, **kwargs)
+        result = func(*args, **kwargs)
         end = time.time()
         print("%s end after %s sec" % (wrapper.__name__, (end-start)))
+        return result
     return wrapper
 
 

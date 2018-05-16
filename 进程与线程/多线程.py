@@ -21,9 +21,10 @@ def show_perf(func):
     def wrapper(*args, **kwargs):
         print("%s start at thread %s" % (wrapper.__name__, threading.current_thread()))
         start = time.time()
-        func(*args, **kwargs)
+        result = func(*args, **kwargs)
         end = time.time()
         print("%s end after %s sec" % (wrapper.__name__, (end-start)))
+        return result
     return wrapper
 
 
@@ -31,8 +32,9 @@ def show_perf(func):
 def foo(x):
     global num
     # CPU bounch
-    for i in range(10000000):
-        num += 1
+    for i in range(1000):
+        for j in range(1000):
+            num += 1
 
     # IP bounch
     time.sleep(x)
@@ -42,8 +44,9 @@ def foo(x):
 def bar(x):
     global num
     # CPU bounch
-    for i in range(10000000):
-        num += 1
+    for i in range(1000):
+        for j in range(1000):
+            num += 1
 
     # IO bounch
     time.sleep(x)
@@ -65,10 +68,10 @@ def main():
     # join 方法表示主线程等待子线程执行完毕,才继续执行下一步
     t1.join()
     t2.join()
+    print('Thread active count: %s (after join)' % threading.active_count())
+    print('num = %s' % num)
 
 
 if __name__ == '__main__':
     num = 0
     main()
-    print('Thread active count: %s (after join)' % threading.active_count())
-    print('num = %s' % num)
