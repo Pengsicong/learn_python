@@ -52,10 +52,10 @@ def producer():
     con.__next__()
     n = 0
     while n < 10:
-        n += 1
         print("\033[32;1m[producer]\033[0m is making baozi %s" % n)
         stat = con.send(n)
         print(stat)
+        n += 1
 
 
 if __name__ == '__main__':

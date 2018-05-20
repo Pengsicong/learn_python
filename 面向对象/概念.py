@@ -279,6 +279,14 @@ Copyright © 2017年 彭思聪. All rights reserved.
                         return object.__new__(cls, *args, **kwargs)
                         
                 obj = Bar()                 #   屏幕打印 'MyType' 'call'
+    
+    
+下划线的意义:    
+    _xxx   ：保护变量，意思是只有类对象和子类对象能够访问到这些变量(尽量避免在类外部直接修改)
+
+    __xxx__ ：系统定义名字
+
+    __xxx  ：类中的私有变量名
             
     
 """

@@ -67,21 +67,6 @@ def main():
     # 设置最大请求
     sk.listen(30)
 
-    # 创建socket
-    sk = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-
-    # 设置服务端套接字端口可以重用, 防止程序关闭后一段时间内端口一直占用
-    sk.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
-
-    # 设置ip和port
-    adress = ('', 8081)
-
-    # 为socket绑定ip和port
-    sk.bind(adress)
-
-    # 设置最大请求
-    sk.listen(30)
-
     monitor_thread = Thread(target=monitor, args=(sk,), daemon=True)
     monitor_thread.start()
 

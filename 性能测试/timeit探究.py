@@ -15,7 +15,7 @@ import time
 
 """
 timeit模块
-    简介
+    简介.md
         Measure execution time of small code snippets
         测试代码块的执行时间的计时器
     python接口
