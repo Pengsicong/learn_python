@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>处理check表单</title>
+    <script src="jquery-3.3.1.js"></script>
+    <script>
+        $(function () {
+            $('#CheckAll').click(function () {
+                $('input:checkbox').prop({checked:true})
+            });
+            $('#CheckNo').click(function () {
+                $('input:checkbox').prop({checked:false})
+            });
+            $('#CheckRev').click(function () {
+                $('input:checkbox').each(function () {
+                    this.checked = !this.checked;
+                })
+            })
+        })
+    </script>
+</head>
+<body>
+<form>
+    你爱好的运动是？<br/>
+    <input type="checkbox" name="items" id="soccer" value="soccer" />
+    <label for="soccer">足球⚽️</label>
+    <input type="checkbox" name="items" id="basketball" value="basketball" />
+    <label for="basketball">篮球🏀</label>
+    <input type="checkbox" name="items" id="badminton" value="badminton" />
+    <label for="badminton">羽毛球🏸</label>
+    <input type="checkbox" name="items" id="pingpong" value="pingpong" />
+    <label for="pingpong">乒乓球🏓</label> <br/>
+    <input type="button" id="CheckAll" value="全选" />
+    <input type="button" id="CheckNo" value="全不选" />
+    <input type="button" id="CheckRev" value="反选" />
+</form>
+</body>
+</html>

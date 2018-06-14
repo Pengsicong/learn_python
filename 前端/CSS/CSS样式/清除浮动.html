@@ -4,37 +4,74 @@
     <meta charset="UTF-8">
     <title>清除浮动</title>
     <style>
-        .left{
-            float: left;
+        *{
+            margin: 0;
+            padding: 0;
+
         }
         .container{
             background: red;
         }
-        .container .item{
+        .container .float_item{
+            float: left;
             width: 180px;
             height: 150px;
             background: #ff9999;
             border: 1px solid red;
         }
         .clearfix:after{
-            content: '.';
-            display: block;
+            content: '';
+            display: table;
             clear: both;
-            visibility: hidden;
-            height: 0;
+        }
+        div.bottom{
+            height: 152px;
+            background: #ddd;
+            font-size: 0;
+        }
+        .bottom .item1{
+            display: inline-block;
+            width: 180px;
+            height: 150px;
+            background: greenyellow;
+            border: 1px solid red;
         }
 
     </style>
 </head>
 <body>
+<!--
+ 清除浮动
+
+    父级上增加属性overflow：hidden
+    在最后一个子元素的后面加一个空的div，给它样式属性 clear:both（不推荐）
+    使用成熟的清浮动样式类，clearfix
+
+    .clearfix:after,.clearfix:before{ content: "";display: table;}
+    .clearfix:after{ clear:both;}
+    .clearfix{zoom:1;}
+
+    清除浮动的使用方法：
+
+    .con2{... overflow:hidden}
+    或者
+    <div class="con2 clearfix">
+
+-->
 <div class="container clearfix">
-    <div class="item left"></div>
-    <div class="item left"></div>
-    <div class="item left"></div>
-    <div class="item left"></div>
-    <div class="item left"></div>
+    <div class="float_item"></div>
+    <div class="float_item"></div>
+    <div class="float_item"></div>
+    <div class="float_item"></div>
+    <div class="float_item"></div>
     <!--<div style="clear: both;"></div>-->
 </div>
-<div>底部</div>
+<div class="bottom">
+    <div class="item1"></div>
+    <div class="item1"></div>
+    <div class="item1"></div>
+    <div class="item1"></div>
+    <div class="item1"></div>
+</div>
 </body>
 </html>

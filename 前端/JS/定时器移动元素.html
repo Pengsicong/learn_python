@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #box{
+            width: 100px;
+            height: 100px;
+            background: #ff9999;
+            position: absolute;
+        }
+        #stop{
+            margin-top: 120px;
+            float: left;
+            top: 120px;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            var oBox = document.getElementById('box');
+            var timer = setInterval(function () {
+            var left = oBox.offsetLeft;
+            var new_left = left + 1;
+            oBox.style.left = new_left + 'px';
+            },50);
+
+
+            document.getElementById('stop').onclick = function () {
+                clearInterval(timer)
+            }
+        }
+
+    </script>
+</head>
+<body>
+<div id="box"></div>
+
+<input type="button" id="stop" value="停止">
+</body>
+</html>

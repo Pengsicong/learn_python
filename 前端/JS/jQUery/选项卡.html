@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>选项卡</title>
+    <style>
+        input{
+            border: 0;
+        }
+        .btns input{
+            width: 100px;
+            height: 30px;
+            cursor: pointer;
+        }
+        .tables div{
+            width: 500px;
+            height: 500px;
+            background: #ff9999;
+            line-height: 500px;
+            text-align: center;
+            display: none;
+        }
+        .tables .active{
+            display: block;
+        }
+        .btns .active{
+            background: #ff9999;
+        }
+    </style>
+    <script type="text/javascript" src="jquery-3.3.1.js"></script>
+    <script>
+        $(function () {
+            $('.btns input').click(function () {
+//                this关键字是原生的对象, jQuery不能直接使用, 需要用$符号进行包装
+//                this.siblings().removeClass('active');
+//                this.addClass('active')
+//                $(this).siblings().removeClass('active');
+//                $(this).addClass('active')
+                $(this).addClass('active').siblings().removeClass('active');
+
+//                获取当前按钮所在层级范围的索引值
+                var cur_index = $(this).index('input');
+
+                $('.tables div').eq(cur_index).addClass('active').siblings().removeClass('active');
+            })
+        })
+    </script>
+</head>
+<body>
+<div class="btns">
+    <input type="button" class="btn1 active" value="选项一">
+    <input type="button" class="btn2" value="选项二">
+    <input type="button" class="btn3" value="选项三">
+</div>
+<div class="tables">
+    <div class="table1 active">内容一</div>
+    <div class="table2">内容二</div>
+    <div class="table3">内容三</div>
+
+</div>
+</body>
+</html>

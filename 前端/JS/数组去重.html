@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>数组去重</title>
+    <script type="text/javascript">
+        window.onload = function () {
+            var aRr = [1,2,3,4,1,1,2,2,3,3,4,4];
+
+//            BUG版本, 由于不管数组是否删除了重复的元素, 索引都会加一,而数组按索引删除某个元素时,后面每个元素会顶替前一个元素,故当删除元素时
+//            会造成它后面一个元素无法判断是否需要删除
+//            for(var i=0; i<aRr.length; i++){
+//                if(aRr.indexOf(aRr[i]) !== i){
+//                    aRr.splice(i,1)
+//                }
+//            }
+
+            var i = 0;
+
+            while(i<aRr.length){
+                if(aRr.indexOf(aRr[i]) !== i){
+                    aRr.splice(i,1)
+                }
+                else{
+                    i++
+                }
+            }
+
+            alert(aRr);
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>

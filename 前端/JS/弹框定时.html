@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .pop_con{
+            display: none;
+        }
+        .pop{
+            width: 400px;
+            height: 300px;
+            border: 1px solid black;
+            position: fixed;
+            left: 50%;
+            top: 50%;
+            margin: -200px 0 0 -150px;
+            background: #fff;
+            z-index: 9999;
+        }
+        .mask{
+            width: 100%;
+            height: 100%;
+            background: #000;
+            opacity:0.3;
+            filter: alpha(opacity=30);
+            position: fixed;
+            top:0;
+            left:0;
+            z-index: 999;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            var oPop = document.getElementsByClassName('pop_con')[0];
+            var oShowoff = document.getElementById('showoff');
+
+            oShowoff.onclick = function() {
+                oPop.style.display = 'none'
+            };
+
+            setTimeout(function() {
+                oPop.style.display = 'block'
+            }, 4000);
+
+
+
+
+        }
+    </script>
+</head>
+<body>
+<h1>首页标题</h1>
+<p>页面内容</p>
+<div class="pop_con">
+    <div class="pop">
+        <h3>提示信息</h3>
+        <a href="javascript:;" id="showoff">关闭</a>
+    </div>
+    <div class="mask">
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>slide动画操作二级菜单</title>
+    <style>
+        body, ul{
+            padding: 0;
+            margin: 0;
+        }
+        ul{
+            list-style: none;
+        }
+        a{
+            text-decoration: none;
+        }
+        .menu{
+            width: 200px;
+            margin: 40px auto;
+        }
+        .menu .level1, .menu ul li a{
+            display: block;
+            width: 200px;
+            height: 30px;
+            font-size: 16px;
+            line-height: 30px;
+            text-indent: 10px;
+            background: #3366cc;
+            color: #FFF;
+            border-bottom: 1px solid #afc6f6;
+        }
+        .menu ul li a{
+            font-size: 14px;
+            text-indent: 20px;
+            background: cornflowerblue;
+        }
+        .menu li ul{
+            display: none;
+        }
+        /*.menu li ul.current{*/
+            /*display: block;*/
+        /*}*/
+        .menu li ul li a:hover{
+			background-color:#f6b544;
+		}
+    </style>
+    <script src="jquery-3.3.1.js"></script>
+    <script>
+        $(function () {
+            $('.level1').click(function () {
+//            $(this).next().slideToggle()
+                $(this).next().slideDown().parent().siblings().children('ul').slideUp();
+
+            })
+        })
+    </script>
+</head>
+<body>
+<ul class="menu">
+    <li>
+        <a href="#" class="level1">水果</a>
+        <ul class="current">
+            <li><a href="#">苹果</a></li>
+            <li><a href="#">梨子</a></li>
+            <li><a href="#">樱桃</a></li>
+            <li><a href="#">西瓜</a></li>
+        </ul>
+    </li>
+    <li>
+        <a href="#" class="level1">蔬菜</a>
+        <ul class="">
+            <li><a href="#">白菜</a></li>
+            <li><a href="#">辣椒</a></li>
+            <li><a href="#">西红柿</a></li>
+            <li><a href="#">洋葱</a></li>
+        </ul>
+    </li>
+    <li>
+        <a href="#" class="level1">肉类</a>
+        <ul class="">
+            <li><a href="#">猪肉</a></li>
+            <li><a href="#">牛肉</a></li>
+            <li><a href="#">羊肉</a></li>
+            <li><a href="#">狗肉</a></li>
+        </ul>
+    </li>
+</ul>
+
+</body>
+</html>

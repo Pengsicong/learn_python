@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>点击事件</title>
+    <style>
+        div.sty{
+            background: seagreen;
+        }
+        .box{
+            width: 500px;
+            height: 500px;
+            background: salmon;
+        }
+
+    </style>
+    <script type="text/javascript" src="jquery-3.3.1.js"></script>
+    <script>
+        $(function () {
+            $('#btn').click(function () {
+                $('.box').toggleClass('sty')
+            })
+        })
+    </script>
+</head>
+<body>
+<input id="btn" type="button" value="切换">
+<div class="box"></div>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        ul{
+            list-style: none;
+            width: 600px;
+            background: forestgreen;
+            text-align: center;
+        }
+        li{
+            width: 100px;
+            height: 100px;
+            background: yellowgreen;
+            display: inline-block;
+            margin: 10px;
+        }
+        .clearfix:after{
+            content:'';
+            display: table;
+            clear: both;
+        }
+    </style>
+</head>
+<body>
+<ul class="clearfix">
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+</ul>
+</body>
+</html>

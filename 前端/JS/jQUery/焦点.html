@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>焦点的获取失去以及改变</title>
+    <script src="jquery-3.3.1.js"></script>
+    <script>
+        $(function () {
+            var tx1 = $('#tx1');
+            tx1.focus(function () {
+                console.log('focus');
+            });
+            tx1.blur(function () {
+                console.log('blur')
+            });
+            tx1.change(function () {
+                console.log('change')
+            });
+        })
+    </script>
+</head>
+<body>
+<input id="tx1" type="text">
+</body>
+</html>

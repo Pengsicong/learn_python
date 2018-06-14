@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        window.onload = function () {
+            setTimeout(clock);
+            var timer = setInterval(clock, 1000);
+            document.getElementById('stop').onclick = function () {
+                clearInterval(timer);
+            };
+
+            function clock() {
+                var d = new Date();
+                document.getElementById('clock').innerHTML = d.toLocaleString();
+            }
+        }
+    </script>
+</head>
+<body>
+<div style="width: 400px; margin: 20px auto 0;">
+    <h1 id="clock"></h1>
+    <div style="text-align: center">
+        <input type="button" id="stop" value="stop">
+    </div>
+
+</div>
+</body>
+</html>

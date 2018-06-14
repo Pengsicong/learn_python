@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>私有变量计数器</title>
+    <script>
+        var count = (function () {
+            var temp = 0;
+            function pp() {
+                alert(temp);
+                temp++;
+            }
+            return pp
+        })();
+        count();
+        count();
+    </script>
+</head>
+<body>
+</body>
+</html>

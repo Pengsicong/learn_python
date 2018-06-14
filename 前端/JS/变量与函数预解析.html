@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>变量与函数预解析 </title>
+    <script type="text/javascript">
+        /*
+        JavaScript解析过程分为两个阶段先是编译阶段，然后执行阶段，
+        在编译阶段会将function定义的函数提前，并且将var定义的变量声明提前，将它赋值为undefined。
+         */
+
+        myalert();  // 弹出 hello
+        alert(aa);  // 弹出 undefined
+        alert(bb);  // 报错
+        var aa = 123;
+        function myalert() {
+            alert('hello')
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>

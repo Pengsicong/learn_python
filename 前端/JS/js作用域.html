@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>js作用域</title>
+    <script>
+        /*
+        1、全局变量：在函数之外定义的变量，为整个页面公用，函数内部外部都可以访问。
+        2、局部变量：在函数内部定义的变量，只能在定义该变量的函数内部访问，外部无法访问。
+         */
+        var a = 'hello';
+
+        function func() {
+            var b = 'world';
+            c = 666;
+        }
+
+        func();
+        alert(c); //弹出666, 因为c在定义的时候没有var限定, 代表它是一个全局变量
+        alert(b); //报错, 局部变量不能再函数外面调用.
+    </script>
+</head>
+<body>
+
+</body>
+</html>

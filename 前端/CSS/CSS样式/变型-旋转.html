@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>旋转</title>
+    <style>
+        p{
+            text-align: center;
+            line-height: 200px;
+        }
+        div{
+            width: 200px;
+            height: 200px;
+            margin: 50px auto;
+            background: cornflowerblue;
+            border-radius: 50%;
+            transition: all 2s ease;
+        }
+
+        .box1:hover{
+            /*Z轴旋转*/
+            transform: rotate(365deg);
+        }
+        .box2:hover{
+            /*X轴旋转*/
+            transform: rotateX(180deg);
+        }
+        .box3:hover{
+            /*Y轴旋转*/
+            transform:rotateY(180deg);
+        }
+
+    </style>
+</head>
+<body>
+<div class="box1"><p>Z轴旋转</p></div>
+<div class="box2"><p>X轴旋转</p></div>
+<div class="box3"><p>Y轴旋转</p></div>
+</body>
+</html>

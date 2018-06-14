@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>数值运算</title>
+    <script type="text/javascript">
+        window.onload = function () {
+          document.getElementById('equal').onclick = cal;
+        };
+        function cal() {
+            var ops =  document.getElementsByClassName('op');
+            var op = '+';
+            for(var i = 0; i < ops.length;i ++){
+                if(ops[i].selected){
+                    op = ops[i].value;
+                    break;
+                }
+            }
+            var val01 = parseFloat(document.getElementById('val01').value);
+            var val02 = parseFloat(document.getElementById('val02').value);
+            var result = document.getElementById('result');
+            var temp = 0;
+            if(isNaN(val01) || isNaN(val02)){
+                alert("请输入数字!");
+                return;
+            }
+            switch (op){
+                case 'add':
+                    temp = val01 + val02;
+                    break;
+                case 'minus':
+                    temp = val01 - val02;
+                    break;
+                case 'multiply':
+                    temp = val01 * val02;
+                    break;
+                case 'divide':
+                    temp = val01 / val02;
+                    break
+            }
+            result.innerHTML = temp;
+        }
+    </script>
+</head>
+<body>
+<input type="text   " id="val01">
+<select>
+    <option class="op" value="add">add</option>
+    <option class="op" value="minus">minus</option>
+    <option class="op" value="multiply">multiply</option>
+    <option class="op" value="divide">divide</option>
+</select>
+<input type="text" id="val02">
+<input type="button" id="equal" value="equal">
+<span id="result"></span>
+</body>
+</html>

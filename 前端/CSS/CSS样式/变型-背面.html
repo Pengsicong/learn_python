@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>背面</title>
+    <style>
+        p{
+            text-align: center;
+            line-height: 200px;
+        }
+        div{
+            width: 200px;
+            height: 200px;
+            margin: 50px auto;
+            background: cornflowerblue;
+            transition: all 2s ease;
+            transform-style: preserve-3d;
+            backface-visibility: hidden;
+        }
+
+        .box1:hover{
+            /*Z轴旋转*/
+            transform:perspective(800px) rotateY(180deg);
+        }
+
+    </style>
+</head>
+<body>
+<div class="box1"><p>背面是否可见</p></div>
+</body>
+</html>

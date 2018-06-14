@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>闭包</title>
+    <script>
+        /*
+        什么是闭包
+            函数嵌套函数，内部函数可以引用外部函数的参数和变量，参数和变量不会被垃圾回收机制收回
+         */
+        var ccc = (function(a){
+
+              var b = 5;
+              function bbb(){
+                   a++;
+                   b++;
+                 alert(a);
+                 alert(b);
+              }
+              return bbb;
+
+            })(2);
+
+        ccc();
+        ccc();
+    </script>
+</head>
+<body>
+</body>
+</html>

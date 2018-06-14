@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>导航条02</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        div.nav-main{
+            width: 960px;
+            height: 40px;
+            margin: 40px auto 0;
+            background: #55a8ea;
+            position: relative;
+        }
+
+        div.nav-main a{
+            width: 100px;
+            height: 40px;
+            font: 14px/40px 'Microsoft Yahei';
+            float: left;
+            text-align: center;
+            color: #fff;
+            text-decoration: none;
+        }
+        div.nav-main a:hover{
+            background: #00619f;
+        }
+        .active{
+            background: #00619f;
+        }
+        div.nav-main span{
+            width: 32px;
+            height: 32px;
+            background: url(imgs/NEW01.png) no-repeat;
+            position: absolute;
+            top: 0;
+            left: 400px;
+
+        }
+
+        .clearfix:after, .clearfix:before{
+            content: '';
+            display: table;
+        }
+        .clearfix:after{
+            clear: both;
+        }
+        .clearfix{
+            zoom: 1;
+        }
+    </style>
+</head>
+<body>
+<div class="nav-main clearfix">
+
+    <a class="active" href="javascript:;">首页</a>
+    <a href="javascript:;">网站建设</a>
+    <a href="javascript:;">程序开发</a>
+    <a href="javascript:;">网络销售</a>
+    <a class="new" href="javascript:;">企业VI</a>
+    <a href="javascript:;">案例展示</a>
+    <a href="javascript:;">联系我们</a>
+    <span></span>
+
+</div>
+</body>
+</html>

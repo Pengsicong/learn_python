@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>圆角</title>
+    <style>
+        div{
+            width: 198px;
+            height: 198px;
+            border: 2px solid salmon;
+            background: #84a42b;
+            margin: 50px auto 0;
+        }
+        p{
+            width: 198px;
+            margin:10px auto;
+            text-align: center;
+        }
+        .box1{
+            -webkit-border-radius: 50%;
+            -moz-border-radius: 50%;
+            border-radius: 50%;
+        }
+        .box2{
+            border-top-left-radius: 200px 100px;
+        }
+        .box3{
+            border-top-left-radius: 100% 50%;
+        }
+        .box4{
+            border-top-left-radius: 50% 50%;
+            border-bottom-right-radius: 50% 50%;
+        }
+        .box5{
+            -webkit-border-radius: 50% 50% 50% 0;
+            -moz-border-radius: 50% 50% 50% 0;
+            border-radius: 50% 50% 50% 0;
+        }
+        .box6{
+            -webkit-border-radius: 40%;
+            -moz-border-radius: 40%;
+            border-radius: 40%;
+        }
+    </style>
+</head>
+<body>
+<div class="box1"></div>
+<p>border-radius: 50%;</p>
+<div class="box2"></div>
+<p>border-top-left-radius: 200px 100px;</p>
+<div class="box3"></div>
+<p>border-top-left-radius: 100% 50%;</p>
+<div class="box4"></div>
+<p>border-top-left-radius: 50% 50%;<br>border-bottom-right-radius: 50% 50%;</p>
+<div class="box5"></div>
+<p>
+p-webkit-border-radius: 50% 50% 50% 0;<br>
+            -moz-border-radius: 50% 50% 50% 0;<br>
+            border-radius: 50% 50% 50% 0;<br>
+</p>
+<div class="box6"></div>
+</body>
+</html>
